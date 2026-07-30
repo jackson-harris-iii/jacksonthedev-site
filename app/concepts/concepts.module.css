@@ -355,7 +355,7 @@
   --teal: #00a8a0;
   --emerald: #1ed89a;
   --blue: #2864ff;
-  --violet: #8247ff;
+  --electric-red: #d12a55;
   --gold: #e5b85c;
   --paper: #f1e8d3;
   --paper-ink: #10223b;
@@ -400,7 +400,7 @@
   z-index: -1;
   inset: 0;
   background:
-    radial-gradient(circle at 88% 18%, rgba(130, 71, 255, 0.24), transparent 23%),
+    radial-gradient(circle at 88% 18%, rgba(209, 42, 85, 0.22), transparent 23%),
     radial-gradient(circle at 64% 78%, rgba(0, 168, 160, 0.22), transparent 31%),
     radial-gradient(circle at 12% 18%, rgba(229, 184, 92, 0.08), transparent 18%),
     linear-gradient(rgba(30, 216, 154, 0.055) 1px, transparent 1px),
@@ -482,7 +482,7 @@
 }
 
 .peacockCopy h1 span {
-  background: linear-gradient(95deg, var(--emerald), #4dcfff 44%, #aa6aff 76%, var(--gold));
+  background: linear-gradient(95deg, var(--emerald), #4dcfff 44%, #d12a55 76%, var(--gold));
   background-clip: text;
   color: transparent;
   font-family: Georgia, serif;
@@ -534,7 +534,7 @@
   border-radius: 100% 0 100% 0;
   background:
     repeating-radial-gradient(ellipse at 100% 100%, transparent 0 16px, rgba(30,216,154,.15) 17px 18px),
-    linear-gradient(145deg, rgba(40,100,255,.17), rgba(130,71,255,.03));
+    linear-gradient(145deg, rgba(40,100,255,.17), rgba(209,42,85,.04));
   transform: rotate(-20deg);
 }
 
@@ -562,7 +562,7 @@
 }
 
 .orbitalOne { transform: rotate(62deg) scaleY(0.42); }
-.orbitalTwo { border-color: rgba(130, 71, 255, 0.52); transform: rotate(-45deg) scaleY(0.58); }
+.orbitalTwo { border-color: rgba(209, 42, 85, 0.58); transform: rotate(-45deg) scaleY(0.58); }
 
 .orbCore {
   z-index: 2;
@@ -627,7 +627,7 @@
   line-height: 1.03;
 }
 
-.atelierNote p em { color: var(--violet); font-weight: 400; }
+.atelierNote p em { color: var(--electric-red); font-weight: 400; }
 .atelierNote small { color: #516077; font-size: .7rem; }
 
 .peacockEditorial {
@@ -663,7 +663,7 @@
 }
 
 .peacockEditorial h2 em {
-  color: var(--violet);
+  color: var(--electric-red);
   font-family: Georgia, serif;
   font-weight: 400;
 }
@@ -710,26 +710,27 @@
 }
 
 .signalCards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-.signalCards article { display: flex; min-height: 330px; flex-direction: column; padding: 23px; border: 1px solid rgba(107, 247, 212, 0.22); background: linear-gradient(145deg, rgba(255,255,255,.055), rgba(255,255,255,.012)); box-shadow: 5px 5px 0 rgba(0,168,160,.09); }
+.signalCards article { display: flex; min-height: 360px; flex-direction: column; padding: 28px; border: 1px solid rgba(107, 247, 212, 0.22); background: linear-gradient(145deg, rgba(255,255,255,.055), rgba(255,255,255,.012)); box-shadow: 5px 5px 0 rgba(0,168,160,.09); }
 .signalCards article:nth-child(2) { transform: translateY(16px) rotate(.45deg); }
 .signalCards article:nth-child(3) { border-color: rgba(229,184,92,.58); background: var(--paper); color: var(--paper-ink); transform: rotate(-.55deg); }
 .signalCards article:nth-child(4) { transform: translateY(8px) rotate(.25deg); }
 .signalCards article:last-child { border-right: 0; }
-.signalCards article > span { margin-bottom: auto; color: var(--gold); font-family: var(--font-geist-mono), monospace; font-size: .65rem; }
-.signalCards small { color: #6ea79e; font-family: var(--font-geist-mono), monospace; font-size: .55rem; letter-spacing: .14em; }
-.signalCards h3 { margin: 7px 0 18px; font-size: 1.3rem; font-weight: 500; }
-.signalCards i { margin: 5px 0 17px; color: var(--emerald); font-size: 1.4rem; font-style: normal; }
-.signalCards strong { margin-top: 8px; color: #bdfff0; font-size: 1rem; }
+.signalCards article > span { margin-bottom: auto; color: var(--gold); font-family: var(--font-geist-mono), monospace; font-size: .78rem; }
+.signalCards small { color: #83b8af; font-family: var(--font-geist-mono), monospace; font-size: .7rem; font-weight: 700; letter-spacing: .14em; }
+.signalCards h3 { margin: 10px 0 22px; font-size: clamp(1.65rem, 2.2vw, 2.15rem); font-weight: 520; letter-spacing: -.035em; }
+.signalCards i { margin: 7px 0 20px; color: var(--emerald); font-size: 1.75rem; font-style: normal; }
+.signalCards strong { margin-top: 10px; color: #bdfff0; font-size: clamp(1.1rem, 1.5vw, 1.35rem); line-height: 1.2; }
 .signalCards article:nth-child(3) small { color: var(--teal); }
-.signalCards article:nth-child(3) strong { color: var(--violet); }
+.signalCards article:nth-child(3) strong { color: var(--electric-red); }
 
-.peacockOffer { position: relative; display: grid; grid-template-columns: auto 1fr auto; gap: 50px; align-items: center; padding: 90px clamp(24px, 6vw, 100px); overflow: hidden; background: linear-gradient(100deg, #163a55, #194054 45%, #352b5c); }
-.peacockOffer::after { position: absolute; right: 10%; bottom: -60%; width: 340px; aspect-ratio: 1; border: 1px solid rgba(229,184,92,.28); border-radius: 50%; background: repeating-radial-gradient(circle, transparent 0 18px, rgba(229,184,92,.11) 19px 20px); content: ""; }
+.peacockOffer { position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 26px; align-items: center; padding: 78px clamp(24px, 6vw, 100px) 235px; overflow: hidden; background: linear-gradient(100deg, #163a55, #194054 52%, #26314d); }
+.peacockOffer::before { position: absolute; z-index: 0; right: 0; bottom: -2px; left: 0; height: 190px; background: linear-gradient(to bottom, transparent, rgba(6,27,43,.08)), url("/brand/tower-bridge-peacock-master.png") center 58% / cover no-repeat; content: ""; opacity: .82; }
+.peacockOffer::after { position: absolute; right: 8%; bottom: -122px; width: 360px; aspect-ratio: 1; border: 1px solid rgba(229,184,92,.36); border-radius: 50%; background: repeating-radial-gradient(circle, transparent 0 18px, rgba(229,184,92,.14) 19px 20px); content: ""; }
 .peacockOffer > div:nth-child(2) { z-index: 1; }
 .peacockOffer > div:nth-child(2) > span { color: var(--emerald); font-family: var(--font-geist-mono), monospace; font-size: .62rem; font-weight: 800; letter-spacing: .14em; }
-.peacockOffer h2 { max-width: 800px; margin: 0; font-size: clamp(2.2rem, 4.4vw, 5rem); font-weight: 500; letter-spacing: -.055em; line-height: .95; }
+.peacockOffer h2 { max-width: 760px; margin: 0; font-size: clamp(2.2rem, 4.4vw, 5rem); font-weight: 500; letter-spacing: -.055em; line-height: .95; }
 .peacockOffer > div:nth-child(2) > h2 { margin-top: 18px; }
-.peacockOffer a { z-index: 1; padding: 17px 20px; background: var(--gold); color: var(--night); font-weight: 800; }
+.peacockOffer a { z-index: 2; margin-left: 6px; padding: 17px 20px; background: var(--gold); color: var(--night); font-weight: 800; }
 .peacockOfferStamp { z-index: 1; display: grid; place-items: center; width: 118px; aspect-ratio: 1; border: 1px solid var(--gold); border-radius: 50%; color: var(--gold); font-family: var(--font-geist-mono), monospace; font-size: .55rem; font-weight: 800; letter-spacing: .12em; transform: rotate(-7deg); }
 .peacockOfferStamp strong { margin: -13px 0; font-size: 1.2rem; }
 .peacock .stanHandoff { color: #c9fff2; background: #05171f; border-color: rgba(77, 250, 207, 0.25); }
@@ -915,6 +916,7 @@
   .peacockGridIntro { gap: 22px; }
   .peacockOffer { gap: 25px; }
   .peacockOfferStamp { width: 84px; }
+  .peacockOffer { padding-bottom: 210px; }
   .californiaHero { min-height: 700px; padding: 65px 20px 50px; }
   .californiaHeadline h1 { font-size: clamp(4.1rem, 21vw, 7rem); }
   .sunStamp { top: 245px; right: -25px; width: 120px; }

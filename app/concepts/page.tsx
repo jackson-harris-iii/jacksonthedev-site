@@ -22,11 +22,11 @@ const workflows = [
 function StanHandoff({ variant }: { variant: ConceptKey }) {
   return (
     <section className={styles.stanHandoff} id={`${variant}-stan-handoff`}>
-      <p>STAN HANDOFF</p>
-      <h2>Your site earns the trust. Stan closes the loop.</h2>
+      <p>BOOKING HANDOFF</p>
+      <h2>Your site earns the trust. The call starts the work.</h2>
       <span>
-        The selected concept will route this button to your real Brain-to-System
-        Audit booking, course, or lead magnet inside Stan.
+        The selected concept will route this button directly to your real
+        Brain-to-System Audit booking page.
       </span>
     </section>
   );
@@ -104,7 +104,7 @@ function SelfrowConcept() {
           A focused diagnostic that turns your scattered business knowledge
           into a prioritized build map and a clear first system.
         </p>
-        <a href="#selfrow-stan-handoff">Apply via Stan ↗</a>
+        <a href="#selfrow-stan-handoff">Book your call ↗</a>
       </section>
       <StanHandoff variant="selfrow" />
     </article>
@@ -215,7 +215,7 @@ function PeacockConcept() {
           <span>THE FIRST MOVE</span>
           <h2>One audit. One map. One system worth building first.</h2>
         </div>
-        <a href="#peacock-stan-handoff">Reserve through Stan ↗</a>
+        <a href="#peacock-stan-handoff">Book your call ↗</a>
       </section>
       <StanHandoff variant="peacock" />
     </article>
@@ -282,7 +282,7 @@ function CaliforniaConcept() {
             <li>Prioritized build map</li>
             <li>A clear first recommendation</li>
           </ul>
-          <a href="#california-stan-handoff">APPLY VIA STAN ↗</a>
+          <a href="#california-stan-handoff">BOOK YOUR CALL ↗</a>
         </article>
       </section>
       <StanHandoff variant="california" />
