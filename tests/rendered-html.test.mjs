@@ -78,6 +78,8 @@ test("keeps all three visual systems and the social preview in source", async ()
   assert.match(page, /PeacockConcept/);
   assert.match(page, /Peacock Atelier/);
   assert.match(page, /THE HUMAN THESIS/);
+  assert.match(page, /HUMAN IN THE LOOP/);
+  assert.match(page, /WHAT DO YOU WANT TO BUILD\?/);
   assert.match(page, /Book your call/);
   assert.doesNotMatch(page, /Reserve through Stan|Apply via Stan|STAN HANDOFF/);
   assert.match(page, /CaliforniaConcept/);
@@ -85,6 +87,11 @@ test("keeps all three visual systems and the social preview in source", async ()
   assert.match(css, /#0b1c48/i);
   assert.match(css, /--emerald: #1ed89a/i);
   assert.match(css, /--electric-red: #d12a55/i);
+  assert.match(css, /humanCurrent/);
+  assert.match(css, /identityPulse/);
+  assert.match(css, /orbitOne/);
+  assert.match(css, /signalCards article:hover/);
+  assert.doesNotMatch(css, /atelierFeather/);
   assert.doesNotMatch(css, /#8247ff|#aa6aff/i);
   assert.match(css, /tower-bridge-peacock-master\.png/);
   assert.match(css, /--forest: #193c2c/i);

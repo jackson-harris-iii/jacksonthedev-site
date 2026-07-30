@@ -442,11 +442,25 @@
 .peacockIdentity::after { right: 28px; }
 
 .peacockIdentity strong {
+  position: relative;
+  isolation: isolate;
   display: block;
   font-size: clamp(2.2rem, 5.2vw, 5.6rem);
   font-weight: 820;
   letter-spacing: -.07em;
   line-height: .86;
+  text-shadow: 0 0 18px rgba(209,42,85,.16);
+  animation: identityPulse 5.4s ease-in-out infinite;
+}
+
+.peacockIdentity strong::before {
+  position: absolute;
+  z-index: -1;
+  inset: 28% 7% -2%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(209,42,85,.38), rgba(209,42,85,.08) 46%, transparent 72%);
+  content: "";
+  filter: blur(18px);
 }
 
 .peacockIdentity span {
@@ -524,18 +538,31 @@
   transform: rotate(11deg);
 }
 
-.atelierFeather {
+.humanCurrent {
   position: absolute;
-  top: -8%;
-  left: -4%;
-  width: 45%;
-  height: 82%;
-  border: 1px solid rgba(77,207,255,.22);
-  border-radius: 100% 0 100% 0;
+  top: 0;
+  left: -9%;
+  width: 58%;
+  height: 72%;
+  border-radius: 48% 52% 42% 58% / 62% 36% 64% 38%;
   background:
-    repeating-radial-gradient(ellipse at 100% 100%, transparent 0 16px, rgba(30,216,154,.15) 17px 18px),
-    linear-gradient(145deg, rgba(40,100,255,.17), rgba(209,42,85,.04));
-  transform: rotate(-20deg);
+    repeating-radial-gradient(ellipse at 82% 72%, transparent 0 18px, rgba(30,216,154,.17) 19px 21px),
+    radial-gradient(circle at 78% 68%, rgba(40,100,255,.2), transparent 42%);
+  mask-image: linear-gradient(118deg, transparent 2%, #000 30%, #000 72%, transparent 96%);
+  transform: rotate(-13deg);
+}
+
+.humanCurrent i {
+  position: absolute;
+  top: 66%;
+  left: 75%;
+  width: 9px;
+  aspect-ratio: 1;
+  border: 2px solid rgba(241,232,211,.82);
+  border-radius: 50%;
+  background: var(--electric-red);
+  box-shadow: 0 0 0 9px rgba(209,42,85,.12), 0 0 28px rgba(209,42,85,.72);
+  animation: decisionPulse 3.2s ease-out infinite;
 }
 
 .peacockOrb {
@@ -561,8 +588,8 @@
   border-radius: 50%;
 }
 
-.orbitalOne { transform: rotate(62deg) scaleY(0.42); }
-.orbitalTwo { border-color: rgba(209, 42, 85, 0.58); transform: rotate(-45deg) scaleY(0.58); }
+.orbitalOne { animation: orbitOne 16s linear infinite; }
+.orbitalTwo { border-color: rgba(209, 42, 85, 0.58); animation: orbitTwo 21s linear infinite; }
 
 .orbCore {
   z-index: 2;
@@ -595,6 +622,9 @@
 .orbTagOne { top: 13%; right: 5%; }
 .orbTagTwo { bottom: 16%; left: 1%; }
 .orbTagThree { right: -2%; bottom: 30%; }
+.orbTagOne { animation: tagFloat 4.6s ease-in-out infinite; }
+.orbTagTwo { animation: tagFloat 5.2s ease-in-out -1.4s infinite; }
+.orbTagThree { animation: tagFloat 4.9s ease-in-out -2.2s infinite; }
 
 .atelierNote {
   position: absolute;
@@ -710,9 +740,10 @@
 }
 
 .signalCards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-.signalCards article { display: flex; min-height: 360px; flex-direction: column; padding: 28px; border: 1px solid rgba(107, 247, 212, 0.22); background: linear-gradient(145deg, rgba(255,255,255,.055), rgba(255,255,255,.012)); box-shadow: 5px 5px 0 rgba(0,168,160,.09); }
+.signalCards article { display: flex; min-height: 360px; flex-direction: column; padding: 28px; border: 1px solid rgba(107,247,212,.46); background: linear-gradient(145deg, rgba(0,168,160,.26), rgba(6,27,43,.88)); box-shadow: 7px 7px 0 rgba(229,184,92,.12); transition: background 220ms ease, border-color 220ms ease, box-shadow 220ms ease, color 220ms ease, transform 220ms ease; }
 .signalCards article:nth-child(2) { transform: translateY(16px) rotate(.45deg); }
-.signalCards article:nth-child(3) { border-color: rgba(229,184,92,.58); background: var(--paper); color: var(--paper-ink); transform: rotate(-.55deg); }
+.signalCards article:nth-child(2), .signalCards article:nth-child(4) { background: linear-gradient(145deg, rgba(16,86,91,.95), rgba(6,38,47,.96)); }
+.signalCards article:nth-child(3) { border-color: rgba(77,207,255,.42); background: linear-gradient(145deg, rgba(19,66,81,.98), rgba(6,33,46,.96)); transform: rotate(-.55deg); }
 .signalCards article:nth-child(4) { transform: translateY(8px) rotate(.25deg); }
 .signalCards article:last-child { border-right: 0; }
 .signalCards article > span { margin-bottom: auto; color: var(--gold); font-family: var(--font-geist-mono), monospace; font-size: .78rem; }
@@ -720,11 +751,25 @@
 .signalCards h3 { margin: 10px 0 22px; font-size: clamp(1.65rem, 2.2vw, 2.15rem); font-weight: 520; letter-spacing: -.035em; }
 .signalCards i { margin: 7px 0 20px; color: var(--emerald); font-size: 1.75rem; font-style: normal; }
 .signalCards strong { margin-top: 10px; color: #bdfff0; font-size: clamp(1.1rem, 1.5vw, 1.35rem); line-height: 1.2; }
-.signalCards article:nth-child(3) small { color: var(--teal); }
-.signalCards article:nth-child(3) strong { color: var(--electric-red); }
+.signalCards article:nth-child(3) small { color: #8fcdc4; }
+.signalCards article:nth-child(3) strong { color: #bdfff0; }
 
-.peacockOffer { position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 26px; align-items: center; padding: 78px clamp(24px, 6vw, 100px) 235px; overflow: hidden; background: linear-gradient(100deg, #163a55, #194054 52%, #26314d); }
-.peacockOffer::before { position: absolute; z-index: 0; right: 0; bottom: -2px; left: 0; height: 190px; background: linear-gradient(to bottom, transparent, rgba(6,27,43,.08)), url("/brand/tower-bridge-peacock-master.png") center 58% / cover no-repeat; content: ""; opacity: .82; }
+@media (hover: hover) {
+  .signalCards article:hover {
+    border-color: var(--gold);
+    background: var(--paper);
+    color: var(--paper-ink);
+    box-shadow: 10px 10px 0 rgba(209,42,85,.32);
+    transform: translateY(-8px) rotate(-.35deg);
+  }
+
+  .signalCards article:hover small { color: var(--teal); }
+  .signalCards article:hover i { color: var(--electric-red); }
+  .signalCards article:hover strong { color: var(--electric-red); }
+}
+
+.peacockOffer { position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 26px; align-items: center; padding: 78px clamp(24px, 6vw, 100px) 305px; overflow: hidden; background: linear-gradient(100deg, #163a55, #194054 52%, #26314d); }
+.peacockOffer::before { position: absolute; z-index: 0; right: 0; bottom: -2px; left: 0; height: 260px; background: linear-gradient(90deg, #173b50 0 15%, rgba(23,59,80,.92) 22%, transparent 36%, transparent 78%, rgba(23,59,80,.64) 100%), linear-gradient(to bottom, #194054 0, transparent 22%, transparent 84%, rgba(6,27,43,.2)), url("/brand/tower-bridge-peacock-master.png") 53% 61% / 1700px auto no-repeat; content: ""; filter: saturate(.78) contrast(1.06); opacity: .9; }
 .peacockOffer::after { position: absolute; right: 8%; bottom: -122px; width: 360px; aspect-ratio: 1; border: 1px solid rgba(229,184,92,.36); border-radius: 50%; background: repeating-radial-gradient(circle, transparent 0 18px, rgba(229,184,92,.14) 19px 20px); content: ""; }
 .peacockOffer > div:nth-child(2) { z-index: 1; }
 .peacockOffer > div:nth-child(2) > span { color: var(--emerald); font-family: var(--font-geist-mono), monospace; font-size: .62rem; font-weight: 800; letter-spacing: .14em; }
@@ -734,6 +779,31 @@
 .peacockOfferStamp { z-index: 1; display: grid; place-items: center; width: 118px; aspect-ratio: 1; border: 1px solid var(--gold); border-radius: 50%; color: var(--gold); font-family: var(--font-geist-mono), monospace; font-size: .55rem; font-weight: 800; letter-spacing: .12em; transform: rotate(-7deg); }
 .peacockOfferStamp strong { margin: -13px 0; font-size: 1.2rem; }
 .peacock .stanHandoff { color: #c9fff2; background: #05171f; border-color: rgba(77, 250, 207, 0.25); }
+
+@keyframes identityPulse {
+  0%, 100% { text-shadow: 0 0 12px rgba(209,42,85,.14); }
+  50% { text-shadow: 0 0 18px rgba(209,42,85,.34), 0 0 44px rgba(209,42,85,.18); }
+}
+
+@keyframes decisionPulse {
+  0%, 100% { box-shadow: 0 0 0 7px rgba(209,42,85,.1), 0 0 20px rgba(209,42,85,.5); }
+  50% { box-shadow: 0 0 0 13px rgba(209,42,85,.02), 0 0 38px rgba(209,42,85,.8); }
+}
+
+@keyframes orbitOne {
+  from { transform: rotate(62deg) scaleY(.42); }
+  to { transform: rotate(422deg) scaleY(.42); }
+}
+
+@keyframes orbitTwo {
+  from { transform: rotate(-45deg) scaleY(.58); }
+  to { transform: rotate(-405deg) scaleY(.58); }
+}
+
+@keyframes tagFloat {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -7px; }
+}
 
 /* California Circuit */
 .california {
@@ -916,7 +986,7 @@
   .peacockGridIntro { gap: 22px; }
   .peacockOffer { gap: 25px; }
   .peacockOfferStamp { width: 84px; }
-  .peacockOffer { padding-bottom: 210px; }
+  .peacockOffer { padding-bottom: 250px; }
   .californiaHero { min-height: 700px; padding: 65px 20px 50px; }
   .californiaHeadline h1 { font-size: clamp(4.1rem, 21vw, 7rem); }
   .sunStamp { top: 245px; right: -25px; width: 120px; }
@@ -930,5 +1000,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .tabs button, .backLink { transition: none; }
+  .tabs button, .backLink, .signalCards article { transition: none; }
+  .peacockIdentity strong, .humanCurrent i, .orbitalOne, .orbitalTwo, .orbTagOne, .orbTagTwo, .orbTagThree { animation: none; }
 }

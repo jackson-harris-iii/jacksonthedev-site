@@ -119,7 +119,7 @@ function PeacockConcept() {
           <span>J/</span> JACKSONTHEDEV
         </Link>
         <div className={styles.peacockStatus}>
-          <i /> HUMAN SYSTEMS · SACRAMENTO
+          <i /> HUMAN IN THE LOOP · SACRAMENTO
         </div>
         <a href="#peacock-stan-handoff">BOOK AN AUDIT ↗</a>
       </header>
@@ -127,7 +127,7 @@ function PeacockConcept() {
       <section className={styles.peacockHero}>
         <div className={styles.peacockIdentity}>
           <strong>JACKSONTHEDEV</strong>
-          <span>PRACTICAL AI · HUMAN SYSTEMS</span>
+          <span>HUMAN IN THE LOOP</span>
         </div>
 
         <div className={styles.peacockCopy}>
@@ -147,7 +147,9 @@ function PeacockConcept() {
 
         <div className={styles.peacockArt}>
           <div className={styles.atelierContours} aria-hidden="true" />
-          <div className={styles.atelierFeather} aria-hidden="true" />
+          <div className={styles.humanCurrent} aria-hidden="true">
+            <i />
+          </div>
           <div className={styles.peacockOrb} aria-label="Expertise becoming an operating system">
             <div className={styles.orbitalOne} />
             <div className={styles.orbitalTwo} />
@@ -188,7 +190,7 @@ function PeacockConcept() {
 
       <section className={styles.peacockGrid} id="peacock-grid">
         <div className={styles.peacockGridIntro}>
-          <span>04 / LIVING SIGNALS</span>
+          <span>WHAT DO YOU WANT TO BUILD?</span>
           <h2>The work is already telling you what to build.</h2>
         </div>
         <div className={styles.signalCards}>
@@ -213,7 +215,7 @@ function PeacockConcept() {
         </div>
         <div>
           <span>THE FIRST MOVE</span>
-          <h2>One audit. One map. One system worth building first.</h2>
+          <h2>One audit. One map. The right first system.</h2>
         </div>
         <a href="#peacock-stan-handoff">Book your call ↗</a>
       </section>
