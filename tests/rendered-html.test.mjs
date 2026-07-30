@@ -53,7 +53,7 @@ test("server-renders the design lab without replacing the current homepage", asy
   const html = await response.text();
   assert.match(html, /<title>JacksonTheDev Design Lab — Three Directions<\/title>/i);
   assert.match(html, /Selfrow Editorial/);
-  assert.match(html, /Peacock Signal/);
+  assert.match(html, /Peacock Atelier/);
   assert.match(html, /California Circuit/);
   assert.match(html, /Turn what’s in your head into systems your business can/);
   assert.match(html, /Book a Brain-to-System Audit/);
@@ -69,13 +69,16 @@ test("keeps all three visual systems and the social preview in source", async ()
 
   assert.match(page, /SelfrowConcept/);
   assert.match(page, /PeacockConcept/);
+  assert.match(page, /Peacock Atelier/);
+  assert.match(page, /THE HUMAN THESIS/);
   assert.match(page, /CaliforniaConcept/);
   assert.match(page, /StanHandoff/);
   assert.match(css, /#0b1c48/i);
   assert.match(css, /--emerald: #1ed89a/i);
   assert.match(css, /--forest: #193c2c/i);
   assert.match(layout, /summary_large_image/);
-  await access(new URL("public/og.png", templateRoot));
+  assert.match(layout, /og-peacock-atelier\.png/);
+  await access(new URL("public/og-peacock-atelier.png", templateRoot));
 });
 
 test("removes the disposable starter and keeps launch metadata", async () => {

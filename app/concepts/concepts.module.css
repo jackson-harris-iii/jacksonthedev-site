@@ -357,6 +357,8 @@
   --blue: #2864ff;
   --violet: #8247ff;
   --gold: #e5b85c;
+  --paper: #f1e8d3;
+  --paper-ink: #10223b;
   background: var(--night);
   color: #edfef9;
 }
@@ -373,7 +375,7 @@
   letter-spacing: 0.1em;
 }
 
-.peacockMark { font-weight: 700; }
+.peacockMark { font-weight: 800; letter-spacing: .04em; }
 .peacockMark span { margin-right: 10px; color: var(--emerald); }
 .peacockStatus { color: #83cfc2; }
 .peacockStatus i { display: inline-block; width: 7px; height: 7px; margin-right: 8px; border-radius: 50%; background: var(--emerald); box-shadow: 0 0 18px var(--emerald); }
@@ -382,11 +384,14 @@
 .peacockHero {
   position: relative;
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 30px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "identity identity"
+    "copy art";
+  gap: 64px 42px;
   align-items: center;
-  min-height: 790px;
-  padding: 80px clamp(24px, 6vw, 100px) 105px;
+  min-height: 920px;
+  padding: 72px clamp(24px, 6vw, 100px) 110px;
   isolation: isolate;
 }
 
@@ -395,14 +400,66 @@
   z-index: -1;
   inset: 0;
   background:
-    radial-gradient(circle at 85% 23%, rgba(130, 71, 255, 0.22), transparent 25%),
-    radial-gradient(circle at 65% 76%, rgba(0, 168, 160, 0.2), transparent 29%),
+    radial-gradient(circle at 88% 18%, rgba(130, 71, 255, 0.24), transparent 23%),
+    radial-gradient(circle at 64% 78%, rgba(0, 168, 160, 0.22), transparent 31%),
+    radial-gradient(circle at 12% 18%, rgba(229, 184, 92, 0.08), transparent 18%),
     linear-gradient(rgba(30, 216, 154, 0.055) 1px, transparent 1px),
     linear-gradient(90deg, rgba(30, 216, 154, 0.055) 1px, transparent 1px);
-  background-size: auto, auto, 42px 42px, 42px 42px;
+  background-size: auto, auto, auto, 42px 42px, 42px 42px;
   content: "";
   mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
 }
+
+.peacockIdentity {
+  position: relative;
+  z-index: 3;
+  grid-area: identity;
+  justify-self: center;
+  width: min(100%, 980px);
+  padding: 24px 38px 20px;
+  border: 1px solid rgba(229, 184, 92, .52);
+  background:
+    linear-gradient(90deg, rgba(16,34,59,.035) 1px, transparent 1px),
+    var(--paper);
+  background-size: 18px 18px, auto;
+  color: var(--paper-ink);
+  box-shadow: 0 18px 60px rgba(0,0,0,.28), 10px 10px 0 rgba(0,168,160,.22);
+  text-align: center;
+  transform: rotate(-.35deg);
+}
+
+.peacockIdentity::before,
+.peacockIdentity::after {
+  position: absolute;
+  top: 50%;
+  width: 86px;
+  height: 1px;
+  background: var(--gold);
+  content: "";
+}
+
+.peacockIdentity::before { left: 28px; }
+.peacockIdentity::after { right: 28px; }
+
+.peacockIdentity strong {
+  display: block;
+  font-size: clamp(2.2rem, 5.2vw, 5.6rem);
+  font-weight: 820;
+  letter-spacing: -.07em;
+  line-height: .86;
+}
+
+.peacockIdentity span {
+  display: block;
+  margin-top: 17px;
+  color: var(--teal);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: .65rem;
+  font-weight: 800;
+  letter-spacing: .25em;
+}
+
+.peacockCopy { grid-area: copy; }
 
 .peacockCopy > p:first-child,
 .peacockGridIntro > span,
@@ -428,6 +485,9 @@
   background: linear-gradient(95deg, var(--emerald), #4dcfff 44%, #aa6aff 76%, var(--gold));
   background-clip: text;
   color: transparent;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
 }
 
 .peacockLede {
@@ -442,8 +502,45 @@
 .peacockActions a { padding: 16px 19px; border: 1px solid rgba(163, 255, 229, 0.33); font-size: 0.82rem; font-weight: 700; }
 .peacockActions a:first-child { border-color: var(--emerald); background: var(--emerald); color: var(--night); box-shadow: 0 0 36px rgba(30, 216, 154, 0.2); }
 
+.peacockArt {
+  position: relative;
+  grid-area: art;
+  display: grid;
+  place-items: center;
+  min-height: 590px;
+}
+
+.atelierContours {
+  position: absolute;
+  right: -13%;
+  bottom: -9%;
+  width: 74%;
+  aspect-ratio: 1;
+  border: 1px solid rgba(229,184,92,.36);
+  border-radius: 44% 56% 38% 62% / 58% 38% 62% 42%;
+  background:
+    repeating-radial-gradient(ellipse at 72% 32%, transparent 0 15px, rgba(229,184,92,.2) 16px 17px),
+    rgba(241,232,211,.035);
+  transform: rotate(11deg);
+}
+
+.atelierFeather {
+  position: absolute;
+  top: -8%;
+  left: -4%;
+  width: 45%;
+  height: 82%;
+  border: 1px solid rgba(77,207,255,.22);
+  border-radius: 100% 0 100% 0;
+  background:
+    repeating-radial-gradient(ellipse at 100% 100%, transparent 0 16px, rgba(30,216,154,.15) 17px 18px),
+    linear-gradient(145deg, rgba(40,100,255,.17), rgba(130,71,255,.03));
+  transform: rotate(-20deg);
+}
+
 .peacockOrb {
   position: relative;
+  z-index: 2;
   display: grid;
   place-items: center;
   width: min(42vw, 570px);
@@ -499,6 +596,96 @@
 .orbTagTwo { bottom: 16%; left: 1%; }
 .orbTagThree { right: -2%; bottom: 30%; }
 
+.atelierNote {
+  position: absolute;
+  z-index: 4;
+  right: -2%;
+  bottom: 0;
+  width: min(58%, 310px);
+  padding: 23px 25px;
+  border: 1px solid var(--paper-ink);
+  background:
+    linear-gradient(rgba(16,34,59,.045) 1px, transparent 1px),
+    var(--paper);
+  background-size: 100% 24px, auto;
+  color: var(--paper-ink);
+  box-shadow: 8px 8px 0 var(--gold);
+  transform: rotate(2.8deg);
+}
+
+.atelierNote > span {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: .55rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+
+.atelierNote p {
+  margin: 22px 0 16px;
+  font-family: Georgia, serif;
+  font-size: clamp(1.45rem, 2.2vw, 2.15rem);
+  line-height: 1.03;
+}
+
+.atelierNote p em { color: var(--violet); font-weight: 400; }
+.atelierNote small { color: #516077; font-size: .7rem; }
+
+.peacockEditorial {
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: clamp(50px, 9vw, 150px);
+  align-items: center;
+  padding: 105px clamp(24px, 6vw, 100px);
+  border-block: 1px solid rgba(229,184,92,.55);
+  background:
+    radial-gradient(circle at 9% 92%, rgba(0,168,160,.13), transparent 24%),
+    linear-gradient(90deg, rgba(16,34,59,.035) 1px, transparent 1px),
+    var(--paper);
+  background-size: auto, 22px 22px, auto;
+  color: var(--paper-ink);
+}
+
+.peacockEditorial span {
+  color: var(--teal);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: .64rem;
+  font-weight: 800;
+  letter-spacing: .16em;
+}
+
+.peacockEditorial h2 {
+  max-width: 760px;
+  margin: 22px 0 0;
+  font-size: clamp(3rem, 5.7vw, 7rem);
+  font-weight: 600;
+  letter-spacing: -.075em;
+  line-height: .88;
+}
+
+.peacockEditorial h2 em {
+  color: var(--violet);
+  font-family: Georgia, serif;
+  font-weight: 400;
+}
+
+.peacockEditorial > p {
+  position: relative;
+  margin: 0;
+  padding: 34px 0 0 34px;
+  border-top: 2px solid var(--gold);
+  font-family: Georgia, serif;
+  font-size: clamp(1.2rem, 1.8vw, 1.65rem);
+  line-height: 1.55;
+}
+
+.peacockEditorial > p::first-letter {
+  float: left;
+  margin: 5px 11px 0 0;
+  color: var(--teal);
+  font-size: 4.3rem;
+  line-height: .72;
+}
+
 .peacockGrid {
   padding: 110px clamp(24px, 6vw, 100px);
   border-top: 1px solid rgba(77, 250, 207, 0.17);
@@ -522,18 +709,29 @@
   line-height: 0.94;
 }
 
-.signalCards { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid rgba(107, 247, 212, 0.22); }
-.signalCards article { display: flex; min-height: 330px; flex-direction: column; padding: 23px; border-right: 1px solid rgba(107, 247, 212, 0.22); background: linear-gradient(145deg, rgba(255,255,255,.045), transparent); }
+.signalCards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.signalCards article { display: flex; min-height: 330px; flex-direction: column; padding: 23px; border: 1px solid rgba(107, 247, 212, 0.22); background: linear-gradient(145deg, rgba(255,255,255,.055), rgba(255,255,255,.012)); box-shadow: 5px 5px 0 rgba(0,168,160,.09); }
+.signalCards article:nth-child(2) { transform: translateY(16px) rotate(.45deg); }
+.signalCards article:nth-child(3) { border-color: rgba(229,184,92,.58); background: var(--paper); color: var(--paper-ink); transform: rotate(-.55deg); }
+.signalCards article:nth-child(4) { transform: translateY(8px) rotate(.25deg); }
 .signalCards article:last-child { border-right: 0; }
 .signalCards article > span { margin-bottom: auto; color: var(--gold); font-family: var(--font-geist-mono), monospace; font-size: .65rem; }
 .signalCards small { color: #6ea79e; font-family: var(--font-geist-mono), monospace; font-size: .55rem; letter-spacing: .14em; }
 .signalCards h3 { margin: 7px 0 18px; font-size: 1.3rem; font-weight: 500; }
 .signalCards i { margin: 5px 0 17px; color: var(--emerald); font-size: 1.4rem; font-style: normal; }
 .signalCards strong { margin-top: 8px; color: #bdfff0; font-size: 1rem; }
+.signalCards article:nth-child(3) small { color: var(--teal); }
+.signalCards article:nth-child(3) strong { color: var(--violet); }
 
-.peacockOffer { display: grid; grid-template-columns: .35fr 1fr auto; gap: 40px; align-items: center; padding: 90px clamp(24px, 6vw, 100px); background: linear-gradient(100deg, #163a55, #194054 45%, #352b5c); }
+.peacockOffer { position: relative; display: grid; grid-template-columns: auto 1fr auto; gap: 50px; align-items: center; padding: 90px clamp(24px, 6vw, 100px); overflow: hidden; background: linear-gradient(100deg, #163a55, #194054 45%, #352b5c); }
+.peacockOffer::after { position: absolute; right: 10%; bottom: -60%; width: 340px; aspect-ratio: 1; border: 1px solid rgba(229,184,92,.28); border-radius: 50%; background: repeating-radial-gradient(circle, transparent 0 18px, rgba(229,184,92,.11) 19px 20px); content: ""; }
+.peacockOffer > div:nth-child(2) { z-index: 1; }
+.peacockOffer > div:nth-child(2) > span { color: var(--emerald); font-family: var(--font-geist-mono), monospace; font-size: .62rem; font-weight: 800; letter-spacing: .14em; }
 .peacockOffer h2 { max-width: 800px; margin: 0; font-size: clamp(2.2rem, 4.4vw, 5rem); font-weight: 500; letter-spacing: -.055em; line-height: .95; }
-.peacockOffer a { padding: 17px 20px; background: var(--gold); color: var(--night); font-weight: 800; }
+.peacockOffer > div:nth-child(2) > h2 { margin-top: 18px; }
+.peacockOffer a { z-index: 1; padding: 17px 20px; background: var(--gold); color: var(--night); font-weight: 800; }
+.peacockOfferStamp { z-index: 1; display: grid; place-items: center; width: 118px; aspect-ratio: 1; border: 1px solid var(--gold); border-radius: 50%; color: var(--gold); font-family: var(--font-geist-mono), monospace; font-size: .55rem; font-weight: 800; letter-spacing: .12em; transform: rotate(-7deg); }
+.peacockOfferStamp strong { margin: -13px 0; font-size: 1.2rem; }
 .peacock .stanHandoff { color: #c9fff2; background: #05171f; border-color: rgba(77, 250, 207, 0.25); }
 
 /* California Circuit */
@@ -663,8 +861,11 @@
   .tabs button { padding: 8px 10px; }
   .selfrowHero { grid-template-columns: 150px 1fr; }
   .selfrowMethod, .selfrowOffer, .peacockHero, .peacockGridIntro, .peacockOffer, .fieldGrid { grid-template-columns: 1fr; }
+  .peacockHero { grid-template-areas: "identity" "copy" "art"; }
   .selfrowOffer > a, .peacockOffer a { width: max-content; }
+  .peacockArt { width: min(100%, 650px); margin-inline: auto; }
   .peacockOrb { width: min(75vw, 560px); }
+  .peacockEditorial { grid-template-columns: 1fr; gap: 55px; }
   .signalCards { grid-template-columns: repeat(2, 1fr); }
   .signalCards article:nth-child(2) { border-right: 0; }
   .signalCards article:nth-child(-n+2) { border-bottom: 1px solid rgba(107, 247, 212, 0.22); }
@@ -698,12 +899,22 @@
   .selfrowOffer { gap: 25px; padding: 60px 20px; }
   .peacockHero, .peacockGrid, .peacockOffer { padding-inline: 20px; }
   .peacockHero { min-height: auto; padding-block: 75px; }
+  .peacockIdentity { padding: 20px 16px 18px; box-shadow: 7px 7px 0 rgba(0,168,160,.22); }
+  .peacockIdentity::before, .peacockIdentity::after { display: none; }
+  .peacockIdentity span { font-size: .52rem; letter-spacing: .16em; }
   .peacockCopy h1 { font-size: clamp(3.7rem, 17vw, 6rem); }
+  .peacockArt { min-height: 530px; }
   .peacockOrb { width: 92vw; margin-top: 70px; }
+  .atelierNote { right: 2%; bottom: -2%; width: 58%; padding: 19px; }
+  .atelierContours { right: -26%; }
+  .peacockEditorial { padding: 70px 20px; }
+  .peacockEditorial > p { padding-left: 0; }
   .signalCards { grid-template-columns: 1fr; }
   .signalCards article { min-height: 250px; border-right: 0; border-bottom: 1px solid rgba(107,247,212,.22); }
+  .signalCards article:nth-child(n) { transform: none; }
   .peacockGridIntro { gap: 22px; }
   .peacockOffer { gap: 25px; }
+  .peacockOfferStamp { width: 84px; }
   .californiaHero { min-height: 700px; padding: 65px 20px 50px; }
   .californiaHeadline h1 { font-size: clamp(4.1rem, 21vw, 7rem); }
   .sunStamp { top: 245px; right: -25px; width: 120px; }

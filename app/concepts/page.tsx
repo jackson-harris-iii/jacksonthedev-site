@@ -8,7 +8,7 @@ type ConceptKey = "selfrow" | "peacock" | "california";
 
 const concepts: Array<{ key: ConceptKey; number: string; name: string }> = [
   { key: "selfrow", number: "01", name: "Selfrow Editorial" },
-  { key: "peacock", number: "02", name: "Peacock Signal" },
+  { key: "peacock", number: "02", name: "Peacock Atelier" },
   { key: "california", number: "03", name: "California Circuit" },
 ];
 
@@ -119,12 +119,17 @@ function PeacockConcept() {
           <span>J/</span> JACKSONTHEDEV
         </Link>
         <div className={styles.peacockStatus}>
-          <i /> SYSTEMS ONLINE · SACRAMENTO
+          <i /> HUMAN SYSTEMS · SACRAMENTO
         </div>
         <a href="#peacock-stan-handoff">BOOK AN AUDIT ↗</a>
       </header>
 
       <section className={styles.peacockHero}>
+        <div className={styles.peacockIdentity}>
+          <strong>JACKSONTHEDEV</strong>
+          <span>PRACTICAL AI · HUMAN SYSTEMS</span>
+        </div>
+
         <div className={styles.peacockCopy}>
           <p>AI SYSTEMS FOR EXPERT-LED BUSINESSES</p>
           <h1>
@@ -140,23 +145,50 @@ function PeacockConcept() {
           </div>
         </div>
 
-        <div className={styles.peacockOrb} aria-label="Expertise becoming an operating system">
-          <div className={styles.orbitalOne} />
-          <div className={styles.orbitalTwo} />
-          <div className={styles.orbCore}>
-            <small>YOUR</small>
-            <strong>EXPERTISE</strong>
-            <span>→ SYSTEM</span>
+        <div className={styles.peacockArt}>
+          <div className={styles.atelierContours} aria-hidden="true" />
+          <div className={styles.atelierFeather} aria-hidden="true" />
+          <div className={styles.peacockOrb} aria-label="Expertise becoming an operating system">
+            <div className={styles.orbitalOne} />
+            <div className={styles.orbitalTwo} />
+            <div className={styles.orbCore}>
+              <small>YOUR</small>
+              <strong>EXPERTISE</strong>
+              <span>→ SYSTEM</span>
+            </div>
+            <span className={styles.orbTagOne}>KNOWLEDGE</span>
+            <span className={styles.orbTagTwo}>FOLLOW-UP</span>
+            <span className={styles.orbTagThree}>DELIVERY</span>
           </div>
-          <span className={styles.orbTagOne}>KNOWLEDGE</span>
-          <span className={styles.orbTagTwo}>FOLLOW-UP</span>
-          <span className={styles.orbTagThree}>DELIVERY</span>
+          <aside className={styles.atelierNote}>
+            <span>FIELD NOTE / 001</span>
+            <p>
+              Build the system.
+              <br />
+              Keep the <em>human.</em>
+            </p>
+            <small>That is the whole point.</small>
+          </aside>
         </div>
+      </section>
+
+      <section className={styles.peacockEditorial}>
+        <div>
+          <span>THE HUMAN THESIS / VOL. I</span>
+          <h2>AI isn’t the offer. <em>Time back is.</em></h2>
+        </div>
+        <p>
+          Most businesses already contain the raw material for leverage. It
+          lives in client calls, hard-won judgment, half-documented workflows,
+          and the answers an owner gives every week. We make that knowledge
+          usable—without sanding off the voice, care, or instinct that made it
+          valuable.
+        </p>
       </section>
 
       <section className={styles.peacockGrid} id="peacock-grid">
         <div className={styles.peacockGridIntro}>
-          <span>04 / SIGNAL PATHS</span>
+          <span>04 / LIVING SIGNALS</span>
           <h2>The work is already telling you what to build.</h2>
         </div>
         <div className={styles.signalCards}>
@@ -174,8 +206,15 @@ function PeacockConcept() {
       </section>
 
       <section className={styles.peacockOffer}>
-        <span>THE FIRST MOVE</span>
-        <h2>One audit. One map. One system worth building first.</h2>
+        <div className={styles.peacockOfferStamp} aria-hidden="true">
+          <span>ONE</span>
+          <strong>×</strong>
+          <span>USEFUL</span>
+        </div>
+        <div>
+          <span>THE FIRST MOVE</span>
+          <h2>One audit. One map. One system worth building first.</h2>
+        </div>
         <a href="#peacock-stan-handoff">Reserve through Stan ↗</a>
       </section>
       <StanHandoff variant="peacock" />
