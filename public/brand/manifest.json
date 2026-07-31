@@ -1,36 +1,44 @@
 {
-  "system": "JacksonTheDev / Peacock Atelier",
+  "system": "JacksonTheDev / Human Current",
   "source_master": "tower-bridge-peacock-master.png",
   "lockup_copy": [
     "JACKSONTHEDEV",
-    "PRACTICAL AI \u00b7 HUMAN SYSTEMS"
+    "HUMAN IN THE LOOP"
   ],
   "accent": "#d12a55",
+  "booking_url": "https://stan.store/jacksonthedev",
   "outputs": [
     {
       "file": "jacksonthedev-linkedin-banner.png",
       "platform": "LinkedIn personal banner",
       "width": 1584,
       "height": 396,
-      "safe_zone": "Exact lockup is centered clear of the lower-left profile-photo overlap."
+      "safe_zone": "Lockup is clear of LinkedIn's lower-left profile-photo overlap."
     },
     {
       "file": "jacksonthedev-x-banner.png",
       "platform": "X / Twitter header",
       "width": 1500,
       "height": 500,
-      "safe_zone": "Exact lockup is centered clear of the lower-left profile-photo overlap."
+      "safe_zone": "Lockup remains centered within X header safe zones."
     },
     {
       "file": "jacksonthedev-business-card-front.png",
       "platform": "Business card front concept (3.5 \u00d7 2 ratio)",
       "width": 1050,
       "height": 600,
-      "safe_zone": "Exact lockup is centered clear of the lower-left profile-photo overlap."
+      "safe_zone": "Exact lockup stays inside a generous print-safe margin."
+    },
+    {
+      "file": "og-peacock-atelier.png",
+      "platform": "Design Lab social preview",
+      "width": 1600,
+      "height": 900,
+      "safe_zone": "Exact lockup is centered for link previews and unfurls."
     }
   ],
   "provenance": {
-    "background": "Built-in image generation using the approved Peacock Atelier card and a Sacramento Tower Bridge reference.",
+    "background": "Built-in image editing of the approved Sacramento Tower Bridge master, replacing the feather with the Human Current motif.",
     "typography_and_exports": "Deterministic Pillow composition from this script."
   }
 }

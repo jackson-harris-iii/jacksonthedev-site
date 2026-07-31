@@ -10,9 +10,9 @@ export const metadata: Metadata = {
       "Compare Selfrow Editorial, Peacock Atelier, and California Circuit.",
     images: [
       {
-        url: "/brand/jacksonthedev-x-banner.png",
-        width: 1500,
-        height: 500,
+        url: "/og-peacock-atelier.png",
+        width: 1600,
+        height: 900,
       },
     ],
   },
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     title: "JacksonTheDev Design Lab — Three Directions",
     description:
       "Compare Selfrow Editorial, Peacock Atelier, and California Circuit.",
-    images: ["/brand/jacksonthedev-x-banner.png"],
+    images: ["/og-peacock-atelier.png"],
   },
 };
 

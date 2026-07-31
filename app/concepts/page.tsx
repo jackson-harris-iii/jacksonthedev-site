@@ -19,15 +19,16 @@ const workflows = [
   ["Expertise", "Capacity"],
 ];
 
-function StanHandoff({ variant }: { variant: ConceptKey }) {
+const bookingUrl = "https://stan.store/jacksonthedev";
+
+function BookingHandoff({ variant }: { variant: ConceptKey }) {
   return (
-    <section className={styles.stanHandoff} id={`${variant}-stan-handoff`}>
-      <p>BOOKING HANDOFF</p>
-      <h2>Your site earns the trust. The call starts the work.</h2>
-      <span>
-        The selected concept will route this button directly to your real
-        Brain-to-System Audit booking page.
-      </span>
+    <section className={styles.bookingHandoff} id={`${variant}-booking`}>
+      <p>BOOK YOUR CALL</p>
+      <h2>Bring the bottleneck. Leave with a first move.</h2>
+      <a href={bookingUrl} target="_blank" rel="noreferrer">
+        Open booking page ↗
+      </a>
     </section>
   );
 }
@@ -44,7 +45,7 @@ function SelfrowConcept() {
           <a href="https://selfrow-blog-sable.vercel.app" target="_blank" rel="noreferrer">
             Writing ↗
           </a>
-          <a href="#selfrow-stan-handoff">Book</a>
+          <a href={bookingUrl} target="_blank" rel="noreferrer">Book</a>
         </nav>
       </header>
 
@@ -70,7 +71,7 @@ function SelfrowConcept() {
             judgment that made the business valuable.
           </p>
           <div className={styles.selfrowActions}>
-            <a href="#selfrow-stan-handoff">Book a Brain-to-System Audit</a>
+            <a href={bookingUrl} target="_blank" rel="noreferrer">Book a Brain-to-System Audit</a>
             <a href="#selfrow-method">Read the method ↓</a>
           </div>
         </div>
@@ -104,9 +105,9 @@ function SelfrowConcept() {
           A focused diagnostic that turns your scattered business knowledge
           into a prioritized build map and a clear first system.
         </p>
-        <a href="#selfrow-stan-handoff">Book your call ↗</a>
+        <a href={bookingUrl} target="_blank" rel="noreferrer">Book your call ↗</a>
       </section>
-      <StanHandoff variant="selfrow" />
+      <BookingHandoff variant="selfrow" />
     </article>
   );
 }
@@ -121,7 +122,7 @@ function PeacockConcept() {
         <div className={styles.peacockStatus}>
           <i /> HUMAN IN THE LOOP · SACRAMENTO
         </div>
-        <a href="#peacock-stan-handoff">BOOK AN AUDIT ↗</a>
+        <a href={bookingUrl} target="_blank" rel="noreferrer">BOOK AN AUDIT ↗</a>
       </header>
 
       <section className={styles.peacockHero}>
@@ -140,7 +141,7 @@ function PeacockConcept() {
             systems that follow up, remember, deliver, and grow.
           </p>
           <div className={styles.peacockActions}>
-            <a href="#peacock-stan-handoff">Map my first system</a>
+            <a href={bookingUrl} target="_blank" rel="noreferrer">Map my first system</a>
             <a href="#peacock-grid">Explore the signal ↓</a>
           </div>
         </div>
@@ -217,9 +218,9 @@ function PeacockConcept() {
           <span>THE FIRST MOVE</span>
           <h2>One audit. One map. The right first system.</h2>
         </div>
-        <a href="#peacock-stan-handoff">Book your call ↗</a>
+        <a href={bookingUrl} target="_blank" rel="noreferrer">Book your call ↗</a>
       </section>
-      <StanHandoff variant="peacock" />
+      <BookingHandoff variant="peacock" />
     </article>
   );
 }
@@ -232,7 +233,7 @@ function CaliforniaConcept() {
           <b>JACKSON</b> / THE DEV
         </Link>
         <p>FIELD OFFICE №03 · SACRAMENTO, CALIFORNIA</p>
-        <a href="#california-stan-handoff">START HERE +</a>
+        <a href={bookingUrl} target="_blank" rel="noreferrer">START HERE +</a>
       </header>
 
       <section className={styles.californiaHero}>
@@ -256,7 +257,7 @@ function CaliforniaConcept() {
             handoffs, faster follow-up, and more room for the work only you can
             do.
           </p>
-          <a href="#california-stan-handoff">Book the audit →</a>
+          <a href={bookingUrl} target="_blank" rel="noreferrer">Book the audit →</a>
         </div>
       </section>
 
@@ -284,10 +285,10 @@ function CaliforniaConcept() {
             <li>Prioritized build map</li>
             <li>A clear first recommendation</li>
           </ul>
-          <a href="#california-stan-handoff">BOOK YOUR CALL ↗</a>
+          <a href={bookingUrl} target="_blank" rel="noreferrer">BOOK YOUR CALL ↗</a>
         </article>
       </section>
-      <StanHandoff variant="california" />
+      <BookingHandoff variant="california" />
     </article>
   );
 }

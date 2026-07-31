@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create deterministic Peacock Atelier social and card exports."""
+"""Create deterministic Human Current social and card exports."""
 
 from __future__ import annotations
 
@@ -27,25 +27,42 @@ EXPORTS = [
         "filename": "jacksonthedev-linkedin-banner.png",
         "platform": "LinkedIn personal banner",
         "size": (1584, 396),
-        "plaque": (330, 74, 1170, 242),
-        "wordmark_size": 88,
-        "subtitle_size": 25,
+        "plaque": (360, 54, 1080, 190),
+        "wordmark_size": 82,
+        "subtitle_size": 24,
+        "centering": (0.5, 0.7),
+        "safe_zone": "Lockup is clear of LinkedIn's lower-left profile-photo overlap.",
     },
     {
         "filename": "jacksonthedev-x-banner.png",
         "platform": "X / Twitter header",
         "size": (1500, 500),
-        "plaque": (260, 116, 1100, 270),
-        "wordmark_size": 91,
-        "subtitle_size": 25,
+        "plaque": (300, 74, 1000, 205),
+        "wordmark_size": 84,
+        "subtitle_size": 24,
+        "centering": (0.5, 0.68),
+        "safe_zone": "Lockup remains centered within X header safe zones.",
     },
     {
         "filename": "jacksonthedev-business-card-front.png",
         "platform": "Business card front concept (3.5 × 2 ratio)",
         "size": (1050, 600),
-        "plaque": (92, 154, 866, 292),
-        "wordmark_size": 76,
+        "plaque": (110, 170, 830, 185),
+        "wordmark_size": 72,
         "subtitle_size": 22,
+        "centering": (0.5, 0.62),
+        "safe_zone": "Exact lockup stays inside a generous print-safe margin.",
+    },
+    {
+        "filename": "og-peacock-atelier.png",
+        "relative_path": "public/og-peacock-atelier.png",
+        "platform": "Design Lab social preview",
+        "size": (1600, 900),
+        "plaque": (210, 236, 1180, 270),
+        "wordmark_size": 108,
+        "subtitle_size": 30,
+        "centering": (0.5, 0.56),
+        "safe_zone": "Exact lockup is centered for link previews and unfurls.",
     },
 ]
 
@@ -93,7 +110,12 @@ def paper_texture(size: tuple[int, int]) -> Image.Image:
 
 def make_export(spec: dict[str, object], master: Image.Image) -> dict[str, object]:
     width, height = spec["size"]
-    canvas = ImageOps.fit(master, (width, height), method=Image.Resampling.LANCZOS, centering=(0.52, 0.52))
+    canvas = ImageOps.fit(
+        master,
+        (width, height),
+        method=Image.Resampling.LANCZOS,
+        centering=spec.get("centering", (0.5, 0.5)),
+    )
     canvas = canvas.convert("RGBA")
 
     shade = Image.new("RGBA", canvas.size, (4, 17, 32, 20))
@@ -115,7 +137,7 @@ def make_export(spec: dict[str, object], master: Image.Image) -> dict[str, objec
     plaque_draw.rectangle((0, 0, plaque_width - 1, plaque_height - 1), outline=GOLD, width=2)
 
     wordmark = "JACKSONTHEDEV"
-    subtitle = "PRACTICAL AI · HUMAN SYSTEMS"
+    subtitle = "HUMAN IN THE LOOP"
     wordmark_font = fit_font(
         wordmark,
         BOLD_FONT,
@@ -160,14 +182,15 @@ def make_export(spec: dict[str, object], master: Image.Image) -> dict[str, objec
     plaque_draw.ellipse((22, 20, 32, 30), fill=ELECTRIC_RED)
     canvas.alpha_composite(plaque, (x, y))
 
-    output_path = BRAND_DIR / str(spec["filename"])
+    relative_path = spec.get("relative_path")
+    output_path = ROOT / str(relative_path) if relative_path else BRAND_DIR / str(spec["filename"])
     canvas.convert("RGB").save(output_path, "PNG", optimize=True)
     return {
         "file": output_path.name,
         "platform": spec["platform"],
         "width": width,
         "height": height,
-        "safe_zone": "Exact lockup is centered clear of the lower-left profile-photo overlap.",
+        "safe_zone": spec["safe_zone"],
     }
 
 
@@ -176,13 +199,14 @@ def main() -> None:
     master = Image.open(MASTER).convert("RGB")
     outputs = [make_export(spec, master) for spec in EXPORTS]
     manifest = {
-        "system": "JacksonTheDev / Peacock Atelier",
+        "system": "JacksonTheDev / Human Current",
         "source_master": MASTER.name,
-        "lockup_copy": ["JACKSONTHEDEV", "PRACTICAL AI · HUMAN SYSTEMS"],
+        "lockup_copy": ["JACKSONTHEDEV", "HUMAN IN THE LOOP"],
         "accent": ELECTRIC_RED,
+        "booking_url": "https://stan.store/jacksonthedev",
         "outputs": outputs,
         "provenance": {
-            "background": "Built-in image generation using the approved Peacock Atelier card and a Sacramento Tower Bridge reference.",
+            "background": "Built-in image editing of the approved Sacramento Tower Bridge master, replacing the feather with the Human Current motif.",
             "typography_and_exports": "Deterministic Pillow composition from this script.",
         },
     }

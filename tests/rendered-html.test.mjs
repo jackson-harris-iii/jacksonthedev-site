@@ -81,14 +81,16 @@ test("keeps all three visual systems and the social preview in source", async ()
   assert.match(page, /HUMAN IN THE LOOP/);
   assert.match(page, /WHAT DO YOU WANT TO BUILD\?/);
   assert.match(page, /Book your call/);
+  assert.match(page, /https:\/\/stan\.store\/jacksonthedev/);
   assert.doesNotMatch(page, /Reserve through Stan|Apply via Stan|STAN HANDOFF/);
   assert.match(page, /CaliforniaConcept/);
-  assert.match(page, /StanHandoff/);
+  assert.match(page, /BookingHandoff/);
+  assert.doesNotMatch(page, /StanHandoff/);
   assert.match(css, /#0b1c48/i);
   assert.match(css, /--emerald: #1ed89a/i);
   assert.match(css, /--electric-red: #d12a55/i);
   assert.match(css, /humanCurrent/);
-  assert.match(css, /identityPulse/);
+  assert.doesNotMatch(css, /identityPulse/);
   assert.match(css, /orbitOne/);
   assert.match(css, /signalCards article:hover/);
   assert.doesNotMatch(css, /atelierFeather/);
@@ -96,16 +98,19 @@ test("keeps all three visual systems and the social preview in source", async ()
   assert.match(css, /tower-bridge-peacock-master\.png/);
   assert.match(css, /--forest: #193c2c/i);
   assert.match(layout, /summary_large_image/);
-  assert.match(layout, /jacksonthedev-x-banner\.png/);
+  assert.match(layout, /og-peacock-atelier\.png/);
 
   const manifest = JSON.parse(manifestText);
   assert.equal(manifest.accent, "#d12a55");
+  assert.deepEqual(manifest.lockup_copy, ["JACKSONTHEDEV", "HUMAN IN THE LOOP"]);
+  assert.equal(manifest.booking_url, "https://stan.store/jacksonthedev");
   assert.deepEqual(
     manifest.outputs.map(({ file, width, height }) => [file, width, height]),
     [
       ["jacksonthedev-linkedin-banner.png", 1584, 396],
       ["jacksonthedev-x-banner.png", 1500, 500],
       ["jacksonthedev-business-card-front.png", 1050, 600],
+      ["og-peacock-atelier.png", 1600, 900],
     ],
   );
 
@@ -114,6 +119,7 @@ test("keeps all three visual systems and the social preview in source", async ()
     access(new URL("public/brand/jacksonthedev-linkedin-banner.png", templateRoot)),
     access(new URL("public/brand/jacksonthedev-x-banner.png", templateRoot)),
     access(new URL("public/brand/jacksonthedev-business-card-front.png", templateRoot)),
+    access(new URL("public/og-peacock-atelier.png", templateRoot)),
   ]);
 
   assert.deepEqual(
@@ -121,11 +127,13 @@ test("keeps all three visual systems and the social preview in source", async ()
       readPngDimensions("public/brand/jacksonthedev-linkedin-banner.png"),
       readPngDimensions("public/brand/jacksonthedev-x-banner.png"),
       readPngDimensions("public/brand/jacksonthedev-business-card-front.png"),
+      readPngDimensions("public/og-peacock-atelier.png"),
     ]),
     [
       [1584, 396],
       [1500, 500],
       [1050, 600],
+      [1600, 900],
     ],
   );
 });
