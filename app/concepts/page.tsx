@@ -8,7 +8,7 @@ type ConceptKey = "selfrow" | "peacock" | "california";
 
 const concepts: Array<{ key: ConceptKey; number: string; name: string }> = [
   { key: "selfrow", number: "01", name: "Selfrow Editorial" },
-  { key: "peacock", number: "02", name: "Peacock Atelier" },
+  { key: "peacock", number: "02", name: "Human Current" },
   { key: "california", number: "03", name: "California Circuit" },
 ];
 
@@ -112,7 +112,7 @@ function SelfrowConcept() {
   );
 }
 
-function PeacockConcept() {
+function HumanCurrentConcept() {
   return (
     <article className={`${styles.concept} ${styles.peacock}`}>
       <header className={styles.peacockHeader}>
@@ -329,7 +329,7 @@ export default function ConceptsPage() {
       </div>
 
       {active === "selfrow" && <SelfrowConcept />}
-      {active === "peacock" && <PeacockConcept />}
+      {active === "peacock" && <HumanCurrentConcept />}
       {active === "california" && <CaliforniaConcept />}
     </main>
   );

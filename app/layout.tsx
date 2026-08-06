@@ -13,19 +13,27 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "JacksonTheDev — Practical AI Systems",
+  title: "JacksonTheDev — Human in the Loop",
   description:
-    "Jackson Harris III helps owner-led businesses turn repeated work, calls, leads, documents, and judgment into practical AI systems.",
-  metadataBase: new URL("https://jacksonthedev.com"),
+    "Jackson Harris III turns calls, leads, documents, workflows, and hard-earned judgment into useful AI systems without losing the human touch.",
+  metadataBase: new URL("https://jacksonthedev.jacksonthedev.chatgpt.site"),
   openGraph: {
-    title: "JacksonTheDev — Practical AI Systems",
-    description: "Turn the work you repeat into a system that keeps moving.",
+    title: "JacksonTheDev — Human in the Loop",
+    description: "Your expertise should create momentum—not a bottleneck.",
     type: "website",
+    images: [
+      {
+        url: "/og-peacock-atelier.png",
+        width: 1600,
+        height: 900,
+      },
+    ],
   },
   twitter: {
-    card: "summary",
-    title: "JacksonTheDev — Practical AI Systems",
-    description: "Turn the work you repeat into a system that keeps moving.",
+    card: "summary_large_image",
+    title: "JacksonTheDev — Human in the Loop",
+    description: "Your expertise should create momentum—not a bottleneck.",
+    images: ["/og-peacock-atelier.png"],
   },
 };
 

@@ -3,11 +3,11 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "JacksonTheDev Design Lab — Three Directions",
   description:
-    "Compare three visual directions for JacksonTheDev: Selfrow Editorial, Peacock Atelier, and California Circuit.",
+    "Compare three visual directions for JacksonTheDev: Selfrow Editorial, Human Current, and California Circuit.",
   openGraph: {
     title: "JacksonTheDev Design Lab — Three Directions",
     description:
-      "Compare Selfrow Editorial, Peacock Atelier, and California Circuit.",
+      "Compare Selfrow Editorial, Human Current, and California Circuit.",
     images: [
       {
         url: "/og-peacock-atelier.png",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "JacksonTheDev Design Lab — Three Directions",
     description:
-      "Compare Selfrow Editorial, Peacock Atelier, and California Circuit.",
+      "Compare Selfrow Editorial, Human Current, and California Circuit.",
     images: ["/og-peacock-atelier.png"],
   },
 };

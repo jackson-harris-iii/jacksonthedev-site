@@ -37,13 +37,14 @@ test("server-renders the JacksonTheDev landing page", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<title>JacksonTheDev — Practical AI Systems<\/title>/i);
-  assert.match(html, /Turn the work you repeat into a system that/);
-  assert.match(html, /Get your free AI blueprint/);
+  assert.match(html, /<title>JacksonTheDev — Human in the Loop<\/title>/i);
+  assert.match(html, /Your expertise should create/);
+  assert.match(html, /Book your call/);
+  assert.match(html, /https:\/\/stan\.store\/jacksonthedev/);
   assert.match(html, /AI isn’t the offer/);
   assert.match(html, /Founding engineer/);
   assert.match(html, /SpotX Games/);
-  assert.match(html, /DM “BLUEPRINT”/);
+  assert.match(html, /Human Current/i);
   assert.match(html, /aria-label="Primary navigation"/);
   assert.doesNotMatch(
     html,
@@ -51,7 +52,7 @@ test("server-renders the JacksonTheDev landing page", async () => {
   );
 });
 
-test("server-renders the design lab without replacing the current homepage", async () => {
+test("server-renders the retained design lab alongside the Human Current homepage", async () => {
   const response = await render("/concepts");
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
@@ -59,7 +60,7 @@ test("server-renders the design lab without replacing the current homepage", asy
   const html = await response.text();
   assert.match(html, /<title>JacksonTheDev Design Lab — Three Directions<\/title>/i);
   assert.match(html, /Selfrow Editorial/);
-  assert.match(html, /Peacock Atelier/);
+  assert.match(html, /Human Current/);
   assert.match(html, /California Circuit/);
   assert.match(html, /Turn what’s in your head into systems your business can/);
   assert.match(html, /Book a Brain-to-System Audit/);
@@ -75,8 +76,9 @@ test("keeps all three visual systems and the social preview in source", async ()
   ]);
 
   assert.match(page, /SelfrowConcept/);
-  assert.match(page, /PeacockConcept/);
-  assert.match(page, /Peacock Atelier/);
+  assert.match(page, /HumanCurrentConcept/);
+  assert.match(page, /Human Current/);
+  assert.doesNotMatch(page, /Peacock Atelier/);
   assert.match(page, /THE HUMAN THESIS/);
   assert.match(page, /HUMAN IN THE LOOP/);
   assert.match(page, /WHAT DO YOU WANT TO BUILD\?/);
@@ -138,17 +140,24 @@ test("keeps all three visual systems and the social preview in source", async ()
   );
 });
 
-test("removes the disposable starter and keeps launch metadata", async () => {
-  const [page, layout, packageJson] = await Promise.all([
+test("keeps the production homepage, Human Current styling, and launch metadata", async () => {
+  const [page, css, layout, packageJson] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
     readFile(new URL("../package.json", import.meta.url), "utf8"),
   ]);
 
   assert.match(page, /instagram\.com\/jacksonthedev/);
-  assert.match(page, /Human in the loop/i);
-  assert.match(layout, /jacksonthedev\.com/);
-  assert.match(layout, /Practical AI Systems/);
+  assert.match(page, /HUMAN CURRENT/);
+  assert.match(page, /HUMAN IN THE LOOP/);
+  assert.match(page, /stan\.store\/jacksonthedev/);
+  assert.match(css, /--electric-red: #d12a55/i);
+  assert.match(css, /tower-bridge-peacock-master\.png/);
+  assert.match(css, /system-card:hover/);
+  assert.match(layout, /jacksonthedev\.jacksonthedev\.chatgpt\.site/);
+  assert.match(layout, /Human in the Loop/);
+  assert.match(layout, /summary_large_image/);
   assert.doesNotMatch(page, /_sites-preview|SkeletonPreview/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
 
