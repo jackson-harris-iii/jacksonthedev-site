@@ -67,6 +67,30 @@ test("server-renders the retained design lab alongside the Human Current homepag
   assert.match(html, /aria-pressed="true"/);
 });
 
+test("server-renders the We Know Sac creator intelligence field test", async () => {
+  const response = await render("/we-know-sac");
+  assert.equal(response.status, 200);
+  assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
+
+  const html = await response.text();
+  assert.match(html, /<title>We Know Sac — What Sacramento Is Becoming<\/title>/i);
+  assert.match(html, /weekly intelligence desk for people who explain Sacramento/i);
+  assert.match(html, /ISSUE 001/);
+  assert.match(html, /Two new concepts now share one address/);
+  assert.match(html, /Broadway’s next milestone is design/);
+  assert.match(html, /VERIFIED FACT/);
+  assert.match(html, /CREATOR ANGLE/);
+  assert.match(html, /FIELD NOTE/);
+  assert.match(html, /exploremidtown\.org\/newbusinesses/);
+  assert.match(html, /cityofsacramento\.gov\/community-development\/agencycounter/);
+  assert.match(html, /Claim the founding creator seat/);
+  assert.match(html, /editorial hypotheses, not reported facts/);
+  assert.match(html, /we-know-sac-og\.png/);
+
+  await access(new URL("public/we-know-sac-og.png", templateRoot));
+  assert.deepEqual(await readPngDimensions("public/we-know-sac-og.png"), [1600, 900]);
+});
+
 test("keeps all three visual systems and the social preview in source", async () => {
   const [page, css, layout, manifestText] = await Promise.all([
     readFile(new URL("../app/concepts/page.tsx", import.meta.url), "utf8"),
