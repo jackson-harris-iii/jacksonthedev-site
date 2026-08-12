@@ -560,34 +560,32 @@ summary:focus-visible {
   padding-block: 135px;
 }
 
-.about-graphic {
+.about-portrait {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  margin: 0;
   aspect-ratio: .84;
-  padding: 28px;
   overflow: hidden;
   border: 1px solid var(--gold);
-  background:
-    radial-gradient(circle at 78% 18%, rgba(209, 42, 85, .18), transparent 24%),
-    linear-gradient(145deg, #164c5c, #0b2740);
+  background: #0b3135;
   box-shadow: 11px 11px 0 var(--gold);
 }
 
-.about-current {
+.about-portrait::after {
   position: absolute;
   inset: 0;
   background:
-    repeating-radial-gradient(ellipse at 78% 32%, transparent 0 20px, rgba(229, 184, 92, .22) 21px 22px),
-    linear-gradient(rgba(30, 216, 154, .05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(30, 216, 154, .05) 1px, transparent 1px);
+    linear-gradient(180deg, transparent 56%, rgba(2, 17, 24, .9) 100%),
+    linear-gradient(90deg, rgba(30, 216, 154, .04) 1px, transparent 1px),
+    linear-gradient(rgba(30, 216, 154, .04) 1px, transparent 1px);
   background-size: auto, 42px 42px, 42px 42px;
+  content: "";
+  pointer-events: none;
 }
 
-.about-graphic > span { position: relative; z-index: 1; color: var(--paper); font-size: clamp(6rem, 13vw, 12rem); font-weight: 680; letter-spacing: -.11em; line-height: .7; }
-.about-graphic sup { vertical-align: top; margin-left: 10px; color: var(--electric-red); font-family: var(--font-geist-mono), monospace; font-size: .12em; letter-spacing: 0; }
-.about-graphic > p { position: relative; z-index: 1; margin: 34px 0 0; color: var(--gold); font-family: var(--font-geist-mono), monospace; font-size: .62rem; font-weight: 800; letter-spacing: .1em; }
+.about-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
+.about-portrait figcaption { position: absolute; z-index: 1; right: 24px; bottom: 24px; left: 24px; display: grid; gap: 6px; font-family: var(--font-geist-mono), monospace; }
+.about-portrait figcaption span { color: var(--paper); font-size: .72rem; font-weight: 850; letter-spacing: .16em; }
+.about-portrait figcaption strong { color: var(--gold); font-size: .58rem; letter-spacing: .1em; }
 .about h2 { max-width: 800px; font-size: clamp(3rem, 5.3vw, 6.1rem); }
 .about-copy > p:not(.section-kicker) { max-width: 750px; margin: 28px 0 0; color: #9dc3bd; font-size: 1.05rem; line-height: 1.68; }
 .about-tags { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 35px; }
@@ -719,7 +717,7 @@ summary:focus-visible {
   .systems-heading { grid-template-columns: .35fr 1fr; }
   .systems-heading > p:last-child { grid-column: 2; }
   .systems-grid { grid-template-columns: repeat(2, 1fr); }
-  .about-graphic { max-width: 570px; }
+  .about-portrait { max-width: 570px; }
   .faq { gap: 55px; }
   .first-move-copy { grid-template-columns: auto 1fr; }
   .first-move-copy > a { grid-column: 2; width: max-content; }

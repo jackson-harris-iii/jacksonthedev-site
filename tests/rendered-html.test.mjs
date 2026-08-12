@@ -45,6 +45,8 @@ test("server-renders the JacksonTheDev landing page", async () => {
   assert.match(html, /Founding engineer/);
   assert.match(html, /SpotX Games/);
   assert.match(html, /Human Current/i);
+  assert.match(html, /jackson-harris-portrait\.png/);
+  assert.match(html, /Jackson Harris, founder of JacksonTheDev/);
   assert.match(html, /aria-label="Primary navigation"/);
   assert.doesNotMatch(
     html,
@@ -184,6 +186,12 @@ test("keeps the production homepage, Human Current styling, and launch metadata"
   assert.match(layout, /summary_large_image/);
   assert.doesNotMatch(page, /_sites-preview|SkeletonPreview/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
+
+  await access(new URL("public/jackson-harris-portrait.png", templateRoot));
+  assert.deepEqual(
+    await readPngDimensions("public/jackson-harris-portrait.png"),
+    [1254, 1254],
+  );
 
   await assert.rejects(access(new URL("../app/_sites-preview", templateRoot)));
 });

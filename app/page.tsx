@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const bookingUrl = "https://stan.store/jacksonthedev";
 const instagramUrl = "https://www.instagram.com/jacksonthedev/";
 
@@ -205,11 +207,18 @@ export default function Home() {
         </section>
 
         <section className="about section-shell" id="about" aria-labelledby="about-title">
-          <div className="about-graphic" aria-hidden="true">
-            <div className="about-current" />
-            <span>JH<sup>III</sup></span>
-            <p>BUILDER / OPERATOR / TRANSLATOR</p>
-          </div>
+          <figure className="about-portrait">
+            <Image
+              src="/jackson-harris-portrait.png"
+              alt="Jackson Harris, founder of JacksonTheDev"
+              fill
+              sizes="(max-width: 1100px) min(100vw - 32px, 570px), 36vw"
+            />
+            <figcaption>
+              <span>JACKSON HARRIS</span>
+              <strong>BUILDER / OPERATOR / TRANSLATOR</strong>
+            </figcaption>
+          </figure>
           <div className="about-copy">
             <p className="section-kicker">HEY, I’M JACKSON</p>
             <h2 id="about-title">I translate between the business and the build.</h2>
