@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const bookingUrl = "https://stan.store/jacksonthedev";
+const bookingUrl = "https://stan.store/jacksonthedev/p/free-systems-audit-";
 const instagramUrl = "https://www.instagram.com/jacksonthedev/";
 
 const systems = [
@@ -48,7 +48,7 @@ const faqs = [
   {
     question: "What happens on the first call?",
     answer:
-      "We focus on where time or money is leaking, what keeps repeating, and the first practical system worth exploring. You leave with a clearer next move.",
+      "It's a free 15-minute systems audit. We focus on where time or money is leaking, what keeps repeating, and the first practical system worth exploring. You leave with a clearer next move.",
   },
   {
     question: "Can you build it after we map it?",
@@ -77,7 +77,7 @@ export default function Home() {
           <a href="#approach">Method</a>
           <a href="#about">About</a>
           <a className="header-cta" href={bookingUrl} target="_blank" rel="noreferrer">
-            BOOK YOUR CALL ↗
+            BOOK A FREE SYSTEMS AUDIT ↗
           </a>
         </nav>
       </header>
@@ -101,30 +101,33 @@ export default function Home() {
             </p>
             <div className="hero-actions">
               <a className="button button-primary" href={bookingUrl} target="_blank" rel="noreferrer">
-                Book your call <span aria-hidden="true">↗</span>
+                Book a free systems audit <span aria-hidden="true">↗</span>
               </a>
               <a className="button button-quiet" href="#systems">
                 See what I build <span aria-hidden="true">↓</span>
               </a>
             </div>
-            <p className="hero-note">One problem · One map · The right first system</p>
+            <p className="hero-note">Free 15-min systems audit · One map · The right first system</p>
           </div>
 
           <div className="hero-art">
             <div className="current-lines" aria-hidden="true"><i /></div>
             <div className="contour-field" aria-hidden="true" />
-            <div className="expertise-orbit" aria-label="Expertise becoming an operating system">
-              <div className="orbit-line orbit-line-one" />
-              <div className="orbit-line orbit-line-two" />
-              <div className="orbit-core">
-                <small>YOUR</small>
-                <strong>EXPERTISE</strong>
-                <span>→ SYSTEM</span>
-              </div>
-              <span className="orbit-tag orbit-tag-one">KNOWLEDGE</span>
-              <span className="orbit-tag orbit-tag-two">FOLLOW-UP</span>
-              <span className="orbit-tag orbit-tag-three">DELIVERY</span>
-            </div>
+            <figure className="hero-portrait">
+              <Image
+                src="/jackson-harris-portrait.png"
+                alt="Jackson Harris, founder of JacksonTheDev"
+                fill
+                priority
+                sizes="(max-width: 1100px) min(100vw - 32px, 620px), 42vw"
+              />
+              <figcaption>
+                <span>JACKSON HARRIS</span>
+                <strong>FOUNDER / ENGINEER / AI SYSTEMS BUILDER</strong>
+              </figcaption>
+            </figure>
+            <span className="portrait-tag portrait-tag-one">HUMAN JUDGMENT</span>
+            <span className="portrait-tag portrait-tag-two">USEFUL SYSTEMS</span>
             <aside className="field-note">
               <span>FIELD NOTE / 001</span>
               <p>Build the system.<br />Keep the <em>human.</em></p>
@@ -133,11 +136,31 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="proof-bar" aria-label="Selected experience">
-          <div><span>BUILDING NOW</span><strong>Founding engineer · Mood Magic</strong></div>
-          <div><span>0 → 1</span><strong>Co-founder · SpotX Games</strong></div>
-          <div><span>ACQUIRED BY</span><strong>Niantic</strong></div>
-          <div><span>HOME BASE</span><strong>Sacramento, California</strong></div>
+        <section className="experience-band" aria-labelledby="experience-title">
+          <div className="section-shell experience-shell">
+            <div className="experience-heading">
+              <p id="experience-title">EXPERIENCE BUILT ACROSS</p>
+              <span>Products and teams I’ve helped build—not a client endorsement list.</span>
+            </div>
+            <div className="experience-grid">
+              <article>
+                <div className="experience-logo experience-logo-mood">
+                  <Image src="/experience/mood-magic.svg" alt="Mood Magic" width={153} height={26} />
+                </div>
+                <p><span>BUILDING NOW</span><strong>Founding engineer</strong></p>
+              </article>
+              <article>
+                <div className="experience-wordmark" aria-label="SpotX Games">SPOT<span>X</span> GAMES</div>
+                <p><span>0 → 1</span><strong>Co-founder</strong></p>
+              </article>
+              <article>
+                <div className="experience-logo experience-logo-niantic">
+                  <Image src="/experience/niantic.png" alt="Niantic" width={200} height={200} />
+                </div>
+                <p><span>OUTCOME</span><strong>SpotX acquired by Niantic</strong></p>
+              </article>
+            </div>
+          </div>
         </section>
 
         <section className="thesis" aria-labelledby="thesis-title">
@@ -207,18 +230,11 @@ export default function Home() {
         </section>
 
         <section className="about section-shell" id="about" aria-labelledby="about-title">
-          <figure className="about-portrait">
-            <Image
-              src="/jackson-harris-portrait.png"
-              alt="Jackson Harris, founder of JacksonTheDev"
-              fill
-              sizes="(max-width: 1100px) min(100vw - 32px, 570px), 36vw"
-            />
-            <figcaption>
-              <span>JACKSON HARRIS</span>
-              <strong>BUILDER / OPERATOR / TRANSLATOR</strong>
-            </figcaption>
-          </figure>
+          <div className="about-graphic" aria-hidden="true">
+            <div className="about-current" />
+            <span>JH<sup>III</sup></span>
+            <p>BUILDER / OPERATOR / TRANSLATOR</p>
+          </div>
           <div className="about-copy">
             <p className="section-kicker">HEY, I’M JACKSON</p>
             <h2 id="about-title">I translate between the business and the build.</h2>
@@ -261,11 +277,11 @@ export default function Home() {
             <div className="first-move-stamp" aria-hidden="true"><span>ONE</span><strong>×</strong><span>USEFUL</span></div>
             <div>
               <p className="section-kicker">THE FIRST MOVE</p>
-              <h2 id="first-move-title">One call. One map. The right first system.</h2>
+              <h2 id="first-move-title">One free audit. One map. The right first system.</h2>
               <p>Bring the bottleneck. Leave with a practical next move.</p>
             </div>
             <a className="button button-gold" href={bookingUrl} target="_blank" rel="noreferrer">
-              Book your call <span aria-hidden="true">↗</span>
+              Book a free systems audit <span aria-hidden="true">↗</span>
             </a>
           </div>
         </section>

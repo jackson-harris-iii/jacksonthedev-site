@@ -19,15 +19,15 @@ const workflows = [
   ["Expertise", "Capacity"],
 ];
 
-const bookingUrl = "https://stan.store/jacksonthedev";
+const bookingUrl = "https://stan.store/jacksonthedev/p/free-systems-audit-";
 
 function BookingHandoff({ variant }: { variant: ConceptKey }) {
   return (
     <section className={styles.bookingHandoff} id={`${variant}-booking`}>
-      <p>BOOK YOUR CALL</p>
+      <p>BOOK A FREE SYSTEMS AUDIT</p>
       <h2>Bring the bottleneck. Leave with a first move.</h2>
       <a href={bookingUrl} target="_blank" rel="noreferrer">
-        Open booking page ↗
+        Book a free systems audit ↗
       </a>
     </section>
   );
@@ -45,7 +45,7 @@ function SelfrowConcept() {
           <a href="https://selfrow-blog-sable.vercel.app" target="_blank" rel="noreferrer">
             Writing ↗
           </a>
-          <a href={bookingUrl} target="_blank" rel="noreferrer">Book</a>
+          <a href={bookingUrl} target="_blank" rel="noreferrer">Free audit</a>
         </nav>
       </header>
 
@@ -71,7 +71,7 @@ function SelfrowConcept() {
             judgment that made the business valuable.
           </p>
           <div className={styles.selfrowActions}>
-            <a href={bookingUrl} target="_blank" rel="noreferrer">Book a Brain-to-System Audit</a>
+            <a href={bookingUrl} target="_blank" rel="noreferrer">Book a free systems audit</a>
             <a href="#selfrow-method">Read the method ↓</a>
           </div>
         </div>
@@ -105,7 +105,7 @@ function SelfrowConcept() {
           A focused diagnostic that turns your scattered business knowledge
           into a prioritized build map and a clear first system.
         </p>
-        <a href={bookingUrl} target="_blank" rel="noreferrer">Book your call ↗</a>
+        <a href={bookingUrl} target="_blank" rel="noreferrer">Book a free systems audit ↗</a>
       </section>
       <BookingHandoff variant="selfrow" />
     </article>
@@ -122,7 +122,7 @@ function HumanCurrentConcept() {
         <div className={styles.peacockStatus}>
           <i /> HUMAN IN THE LOOP · SACRAMENTO
         </div>
-        <a href={bookingUrl} target="_blank" rel="noreferrer">BOOK AN AUDIT ↗</a>
+        <a href={bookingUrl} target="_blank" rel="noreferrer">BOOK A FREE SYSTEMS AUDIT ↗</a>
       </header>
 
       <section className={styles.peacockHero}>
@@ -218,7 +218,7 @@ function HumanCurrentConcept() {
           <span>THE FIRST MOVE</span>
           <h2>One audit. One map. The right first system.</h2>
         </div>
-        <a href={bookingUrl} target="_blank" rel="noreferrer">Book your call ↗</a>
+        <a href={bookingUrl} target="_blank" rel="noreferrer">Book a free systems audit ↗</a>
       </section>
       <BookingHandoff variant="peacock" />
     </article>
@@ -257,7 +257,7 @@ function CaliforniaConcept() {
             handoffs, faster follow-up, and more room for the work only you can
             do.
           </p>
-          <a href={bookingUrl} target="_blank" rel="noreferrer">Book the audit →</a>
+          <a href={bookingUrl} target="_blank" rel="noreferrer">Book a free systems audit →</a>
         </div>
       </section>
 
@@ -285,7 +285,7 @@ function CaliforniaConcept() {
             <li>Prioritized build map</li>
             <li>A clear first recommendation</li>
           </ul>
-          <a href={bookingUrl} target="_blank" rel="noreferrer">BOOK YOUR CALL ↗</a>
+          <a href={bookingUrl} target="_blank" rel="noreferrer">BOOK A FREE SYSTEMS AUDIT ↗</a>
         </article>
       </section>
       <BookingHandoff variant="california" />

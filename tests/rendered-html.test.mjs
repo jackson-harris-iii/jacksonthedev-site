@@ -39,11 +39,13 @@ test("server-renders the JacksonTheDev landing page", async () => {
   const html = await response.text();
   assert.match(html, /<title>JacksonTheDev — Human in the Loop<\/title>/i);
   assert.match(html, /Your expertise should create/);
-  assert.match(html, /Book your call/);
-  assert.match(html, /https:\/\/stan\.store\/jacksonthedev/);
+  assert.match(html, /Book a free systems audit/i);
+  assert.match(html, /https:\/\/stan\.store\/jacksonthedev\/p\/free-systems-audit-/);
   assert.match(html, /AI isn’t the offer/);
   assert.match(html, /Founding engineer/);
   assert.match(html, /SpotX Games/);
+  assert.match(html, /EXPERIENCE BUILT ACROSS/);
+  assert.match(html, /SpotX acquired by Niantic/);
   assert.match(html, /Human Current/i);
   assert.match(html, /jackson-harris-portrait\.png/);
   assert.match(html, /Jackson Harris, founder of JacksonTheDev/);
@@ -65,7 +67,7 @@ test("server-renders the retained design lab alongside the Human Current homepag
   assert.match(html, /Human Current/);
   assert.match(html, /California Circuit/);
   assert.match(html, /Turn what’s in your head into systems your business can/);
-  assert.match(html, /Book a Brain-to-System Audit/);
+  assert.match(html, /Book a free systems audit/i);
   assert.match(html, /aria-pressed="true"/);
 });
 
@@ -108,7 +110,7 @@ test("keeps all three visual systems and the social preview in source", async ()
   assert.match(page, /THE HUMAN THESIS/);
   assert.match(page, /HUMAN IN THE LOOP/);
   assert.match(page, /WHAT DO YOU WANT TO BUILD\?/);
-  assert.match(page, /Book your call/);
+  assert.match(page, /Book a free systems audit/i);
   assert.match(page, /https:\/\/stan\.store\/jacksonthedev/);
   assert.doesNotMatch(page, /Reserve through Stan|Apply via Stan|STAN HANDOFF/);
   assert.match(page, /CaliforniaConcept/);
@@ -188,9 +190,15 @@ test("keeps the production homepage, Human Current styling, and launch metadata"
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
 
   await access(new URL("public/jackson-harris-portrait.png", templateRoot));
+  await access(new URL("public/experience/mood-magic.svg", templateRoot));
+  await access(new URL("public/experience/niantic.png", templateRoot));
   assert.deepEqual(
     await readPngDimensions("public/jackson-harris-portrait.png"),
     [1254, 1254],
+  );
+  assert.deepEqual(
+    await readPngDimensions("public/experience/niantic.png"),
+    [200, 200],
   );
 
   await assert.rejects(access(new URL("../app/_sites-preview", templateRoot)));
