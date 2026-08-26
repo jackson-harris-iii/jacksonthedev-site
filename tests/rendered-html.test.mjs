@@ -46,6 +46,11 @@ test("server-renders the JacksonTheDev landing page", async () => {
   assert.match(html, /SpotX Games/);
   assert.match(html, /EXPERIENCE BUILT ACROSS/);
   assert.match(html, /SpotX acquired by Niantic/);
+  assert.match(html, /GoodLeap/i);
+  assert.match(html, /Senior software engineer/);
+  assert.match(html, /Pagoda/i);
+  assert.match(html, /aria-label="Professional experience"/);
+  assert.match(html, /aria-hidden="true"/);
   assert.match(html, /Human Current/i);
   assert.match(html, /jackson-harris-portrait\.png/);
   assert.match(html, /Jackson Harris, founder of JacksonTheDev/);

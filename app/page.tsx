@@ -3,6 +3,41 @@ import Image from "next/image";
 const bookingUrl = "https://stan.store/jacksonthedev/p/free-systems-audit-";
 const instagramUrl = "https://www.instagram.com/jacksonthedev/";
 
+const experienceItems = [
+  { name: "Mood Magic", kind: "mood", eyebrow: "BUILDING NOW", role: "Founding engineer" },
+  { name: "SpotX Games", kind: "spotx", eyebrow: "0 → 1", role: "Co-founder" },
+  { name: "Niantic", kind: "niantic", eyebrow: "OUTCOME", role: "SpotX acquired by Niantic" },
+  { name: "GoodLeap", kind: "goodleap", eyebrow: "EXPERIENCE", role: "Senior software engineer" },
+  { name: "Pagoda", kind: "pagoda", eyebrow: "EXPERIENCE", role: "Software engineering" },
+] as const;
+
+function ExperienceItem({ item }: { item: (typeof experienceItems)[number] }) {
+  return (
+    <article>
+      {item.kind === "mood" && (
+        <div className="experience-logo experience-logo-mood">
+          <Image src="/experience/mood-magic.svg" alt="Mood Magic" width={153} height={26} />
+        </div>
+      )}
+      {item.kind === "niantic" && (
+        <div className="experience-logo experience-logo-niantic">
+          <Image src="/experience/niantic.png" alt="Niantic" width={200} height={200} />
+        </div>
+      )}
+      {item.kind === "spotx" && (
+        <div className="experience-wordmark" aria-label="SpotX Games">SPOT<span>X</span> GAMES</div>
+      )}
+      {item.kind === "goodleap" && (
+        <div className="experience-wordmark experience-wordmark-goodleap">GOOD<span>LEAP</span></div>
+      )}
+      {item.kind === "pagoda" && (
+        <div className="experience-wordmark experience-wordmark-pagoda">PAGODA<span aria-hidden="true">.</span></div>
+      )}
+      <p><span>{item.eyebrow}</span><strong>{item.role}</strong></p>
+    </article>
+  );
+}
+
 const systems = [
   {
     index: "01",
@@ -142,23 +177,15 @@ export default function Home() {
               <p id="experience-title">EXPERIENCE BUILT ACROSS</p>
               <span>Products and teams I’ve helped build—not a client endorsement list.</span>
             </div>
-            <div className="experience-grid">
-              <article>
-                <div className="experience-logo experience-logo-mood">
-                  <Image src="/experience/mood-magic.svg" alt="Mood Magic" width={153} height={26} />
+            <div className="experience-window" tabIndex={0} aria-label="Professional experience">
+              <div className="experience-track">
+                <div className="experience-list">
+                  {experienceItems.map((item) => <ExperienceItem item={item} key={item.name} />)}
                 </div>
-                <p><span>BUILDING NOW</span><strong>Founding engineer</strong></p>
-              </article>
-              <article>
-                <div className="experience-wordmark" aria-label="SpotX Games">SPOT<span>X</span> GAMES</div>
-                <p><span>0 → 1</span><strong>Co-founder</strong></p>
-              </article>
-              <article>
-                <div className="experience-logo experience-logo-niantic">
-                  <Image src="/experience/niantic.png" alt="Niantic" width={200} height={200} />
+                <div className="experience-list" aria-hidden="true">
+                  {experienceItems.map((item) => <ExperienceItem item={item} key={item.name} />)}
                 </div>
-                <p><span>OUTCOME</span><strong>SpotX acquired by Niantic</strong></p>
-              </article>
+              </div>
             </div>
           </div>
         </section>

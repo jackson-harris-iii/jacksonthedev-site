@@ -422,18 +422,28 @@ summary:focus-visible {
 .experience-heading { display: flex; flex-direction: column; justify-content: center; padding-right: 34px; border-right: 1px solid rgba(77, 250, 207, .17); }
 .experience-heading p { margin: 0 0 9px; color: var(--gold); font-family: var(--font-geist-mono), monospace; font-size: .66rem; font-weight: 800; letter-spacing: .14em; }
 .experience-heading span { max-width: 280px; color: #78a9a1; font-size: .72rem; line-height: 1.45; }
-.experience-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
-.experience-grid article { display: grid; grid-template-columns: minmax(105px, 1fr) minmax(85px, .85fr); gap: 18px; align-items: center; min-height: 100px; padding: 15px 22px; border-right: 1px solid rgba(77, 250, 207, .17); }
-.experience-grid article:last-child { border-right: 0; }
+.experience-window { min-width: 0; overflow: hidden; outline: none; mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent); }
+.experience-window:focus-visible { box-shadow: inset 0 0 0 1px var(--gold); }
+.experience-track { display: flex; width: max-content; animation: experience-marquee 36s linear infinite; }
+.experience-window:hover .experience-track, .experience-window:focus-within .experience-track { animation-play-state: paused; }
+.experience-list { display: flex; flex: none; }
+.experience-list article { display: grid; width: clamp(265px, 22vw, 330px); grid-template-columns: minmax(105px, 1fr) minmax(105px, .9fr); gap: 18px; align-items: center; min-height: 100px; padding: 15px 22px; border-right: 1px solid rgba(77, 250, 207, .17); }
 .experience-logo { display: grid; place-items: center; height: 62px; }
 .experience-logo-mood img { width: 100%; max-width: 140px; height: auto; }
 .experience-logo-niantic img { width: 64px; height: 64px; object-fit: cover; mix-blend-mode: screen; filter: invert(1) grayscale(1); }
 .experience-wordmark { color: var(--paper); font-family: var(--font-geist-mono), monospace; font-size: clamp(.68rem, .86vw, .9rem); font-weight: 850; letter-spacing: -.04em; white-space: nowrap; }
 .experience-wordmark span { color: var(--electric-red); }
-.experience-grid p { margin: 0; }
-.experience-grid p span, .experience-grid p strong { display: block; }
-.experience-grid p span { margin-bottom: 7px; color: var(--gold); font-family: var(--font-geist-mono), monospace; font-size: .52rem; letter-spacing: .12em; }
-.experience-grid p strong { color: #c8e9e3; font-size: .76rem; line-height: 1.35; }
+.experience-wordmark-goodleap span { color: var(--emerald); }
+.experience-wordmark-pagoda { letter-spacing: .12em; }
+.experience-wordmark-pagoda span { color: var(--gold); }
+.experience-list p { margin: 0; }
+.experience-list p span, .experience-list p strong { display: block; }
+.experience-list p span { margin-bottom: 7px; color: var(--gold); font-family: var(--font-geist-mono), monospace; font-size: .52rem; letter-spacing: .12em; }
+.experience-list p strong { color: #c8e9e3; font-size: .76rem; line-height: 1.35; }
+
+@keyframes experience-marquee {
+  to { transform: translateX(-50%); }
+}
 
 .thesis {
   display: grid;
@@ -731,9 +741,7 @@ summary:focus-visible {
   .current-lines { left: -20%; }
   .contour-field { right: -28%; }
   .experience-band { padding-block: 30px; }
-  .experience-grid { grid-template-columns: 1fr; }
-  .experience-grid article { grid-template-columns: 110px 1fr; padding-inline: 0; border-right: 0; border-bottom: 1px solid rgba(77, 250, 207, .17); }
-  .experience-grid article:last-child { border-bottom: 0; }
+  .experience-list article { width: 280px; grid-template-columns: 110px 1fr; padding-inline: 18px; }
   .thesis { gap: 52px; padding: 80px 20px; }
   .thesis h2, .systems-heading h2, .approach h2, .about h2, .faq h2 { font-size: clamp(3rem, 13vw, 4.8rem); }
   .thesis-copy { padding-left: 0; }
@@ -762,5 +770,7 @@ summary:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: .01ms !important; }
-  .current-lines i, .portrait-tag { animation: none; }
+  .current-lines i, .portrait-tag, .experience-track { animation: none; }
+  .experience-window { overflow-x: auto; mask-image: none; }
+  .experience-list[aria-hidden="true"] { display: none; }
 }
