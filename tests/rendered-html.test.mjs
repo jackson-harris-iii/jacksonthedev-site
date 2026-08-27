@@ -38,6 +38,8 @@ test("server-renders the JacksonTheDev landing page", async () => {
 
   const html = await response.text();
   assert.match(html, /<title>JacksonTheDev — Human in the Loop<\/title>/i);
+  assert.match(html, /href="\/favicon\.svg"/i);
+  assert.match(html, /type="image\/svg\+xml"/i);
   assert.match(html, /Your expertise should create/);
   assert.match(html, /Book a free systems audit/i);
   assert.match(html, /https:\/\/stan\.store\/jacksonthedev\/p\/free-systems-audit-/);

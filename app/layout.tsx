@@ -17,6 +17,10 @@ export const metadata: Metadata = {
   description:
     "Jackson Harris III turns calls, leads, documents, workflows, and hard-earned judgment into useful AI systems without losing the human touch.",
   metadataBase: new URL("https://jacksonthedev.jacksonthedev.chatgpt.site"),
+  icons: {
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+    shortcut: "/favicon.svg",
+  },
   openGraph: {
     title: "JacksonTheDev — Human in the Loop",
     description: "Your expertise should create momentum—not a bottleneck.",
