@@ -16,20 +16,23 @@ export const metadata: Metadata = {
   title: "JacksonTheDev — Human in the Loop",
   description:
     "Jackson Harris III turns calls, leads, documents, workflows, and hard-earned judgment into useful AI systems without losing the human touch.",
-  metadataBase: new URL("https://jacksonthedev.jacksonthedev.chatgpt.site"),
+  metadataBase: new URL("https://jacksonthedev.com"),
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
     shortcut: "/favicon.svg",
   },
   openGraph: {
-    title: "JacksonTheDev — Human in the Loop",
-    description: "Your expertise should create momentum—not a bottleneck.",
+    title: "JacksonTheDev",
+    description: "Human in the Loop · AI systems for expert-led businesses.",
     type: "website",
+    url: "/",
+    siteName: "JacksonTheDev",
     images: [
       {
-        url: "/og-peacock-atelier.png",
-        width: 1600,
-        height: 900,
+        url: "/link-preview.png",
+        width: 1200,
+        height: 1200,
+        alt: "JacksonTheDev J slash monogram",
       },
     ],
   },

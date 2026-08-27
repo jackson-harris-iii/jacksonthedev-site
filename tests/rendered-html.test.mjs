@@ -40,6 +40,8 @@ test("server-renders the JacksonTheDev landing page", async () => {
   assert.match(html, /<title>JacksonTheDev — Human in the Loop<\/title>/i);
   assert.match(html, /href="\/favicon\.svg"/i);
   assert.match(html, /type="image\/svg\+xml"/i);
+  assert.match(html, /https:\/\/jacksonthedev\.com\/link-preview\.png/i);
+  assert.match(html, /property="og:title" content="JacksonTheDev"/i);
   assert.match(html, /Your expertise should create/);
   assert.match(html, /Book a free systems audit/i);
   assert.match(html, /https:\/\/stan\.store\/jacksonthedev\/p\/free-systems-audit-/);
@@ -190,7 +192,8 @@ test("keeps the production homepage, Human Current styling, and launch metadata"
   assert.match(css, /--electric-red: #d12a55/i);
   assert.match(css, /tower-bridge-peacock-master\.png/);
   assert.match(css, /system-card:hover/);
-  assert.match(layout, /jacksonthedev\.jacksonthedev\.chatgpt\.site/);
+  assert.match(layout, /https:\/\/jacksonthedev\.com/);
+  assert.match(layout, /link-preview\.png/);
   assert.match(layout, /Human in the Loop/);
   assert.match(layout, /summary_large_image/);
   assert.doesNotMatch(page, /_sites-preview|SkeletonPreview/);
@@ -199,6 +202,7 @@ test("keeps the production homepage, Human Current styling, and launch metadata"
   await access(new URL("public/jackson-harris-portrait.png", templateRoot));
   await access(new URL("public/experience/mood-magic.svg", templateRoot));
   await access(new URL("public/experience/niantic.png", templateRoot));
+  await access(new URL("public/link-preview.png", templateRoot));
   assert.deepEqual(
     await readPngDimensions("public/jackson-harris-portrait.png"),
     [1254, 1254],
@@ -206,6 +210,10 @@ test("keeps the production homepage, Human Current styling, and launch metadata"
   assert.deepEqual(
     await readPngDimensions("public/experience/niantic.png"),
     [200, 200],
+  );
+  assert.deepEqual(
+    await readPngDimensions("public/link-preview.png"),
+    [1200, 1200],
   );
 
   await assert.rejects(access(new URL("../app/_sites-preview", templateRoot)));
