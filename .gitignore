@@ -41,3 +41,6 @@ next-env.d.ts
 /.wrangler/
 /outputs/
 /work/
+/WE_KNOW_SAC_LAUNCH.md
+/private/
+*.bundle

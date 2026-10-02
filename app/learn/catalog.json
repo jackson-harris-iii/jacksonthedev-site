@@ -1,0 +1,181 @@
+{
+  "version": "2026-10-02",
+  "resources": {
+    "method": [
+      "Spec, verifier, environment",
+      "https://www.youtube.com/watch?v=7zZy1QTvokM"
+    ],
+    "skills": [
+      "Reusable skills: introductory excerpt",
+      "https://www.youtube.com/watch?v=E8T_Fa6ZFKw&t=34s"
+    ],
+    "factory": [
+      "Software factory: developer extension",
+      "https://www.youtube.com/watch?v=_LCeJZFIsd4"
+    ],
+    "wiki": [
+      "Karpathy’s LLM Wiki",
+      "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f"
+    ],
+    "agents": [
+      "Building effective agents",
+      "https://www.anthropic.com/engineering/building-effective-agents"
+    ]
+  },
+  "branches": {
+    "family": {
+      "label": "Home & family",
+      "title": "A fictional weekend planner",
+      "input": "Three invented activities with prices, durations, and opening hours. Use no private family information.",
+      "checks": [
+        "The total stays within a fictional $60 budget.",
+        "Activities do not overlap and fit within four hours.",
+        "An unavailable activity is flagged, not silently substituted."
+      ],
+      "transfer": "One activity closes and your budget becomes $40. Revise the plan and explain what changed."
+    },
+    "game": {
+      "label": "Games & play",
+      "title": "A tabletop checkpoint game",
+      "input": "Five invented checkpoints, scoring rules, and two fictional players. No real location tracking.",
+      "checks": [
+        "A repeat check-in cannot award points twice.",
+        "A player can explain how the game ends.",
+        "An invalid checkpoint produces a clear exception."
+      ],
+      "transfer": "A checkpoint becomes unavailable. Change the rules without creating an unbeatable game."
+    },
+    "work": {
+      "label": "Work & operations",
+      "title": "A synthetic reconciliation report",
+      "input": "Two invented tables with record IDs and amounts. Include one mismatch, one missing record, and one duplicate. No employer data.",
+      "checks": [
+        "Every mismatch and missing ID appears in the exceptions list.",
+        "A duplicate is flagged rather than counted twice.",
+        "Totals reconcile against a hand calculation."
+      ],
+      "transfer": "Add a duplicate and a late correction. Explain how the result changes and which rows need human review."
+    },
+    "product": {
+      "label": "My own product",
+      "title": "A one-screen product prototype",
+      "input": "One fictional user, one action, and three made-up records. Start on paper or with a local mock-up.",
+      "checks": [
+        "The primary action works on a valid input.",
+        "An empty or invalid input gets a useful response.",
+        "The mock-up does not send information or pretend an external action succeeded."
+      ],
+      "transfer": "A user provides missing information. Show how the interface recovers without guessing."
+    }
+  },
+  "lessons": [
+    {
+      "id": "context",
+      "title": "Give the assistant enough context",
+      "minutes": "20–30",
+      "source": "method",
+      "segment": "Start with the introduction; then practice.",
+      "idea": "An assistant works from the context and tools available in this session. Tell it what the result is for and what information it may use.",
+      "task": "Write your desired outcome, permitted inputs, one unknown, and one action that needs your approval. Ask the assistant to reflect the brief before drafting.",
+      "question": "You can open a company spreadsheet. Does that alone authorize uploading it to an AI service?",
+      "answers": [
+        "Yes, browser access is enough.",
+        "No. Check the organization’s rules and the intended processing.",
+        "Yes, if a second model reviews it."
+      ],
+      "correct": 1,
+      "feedback": "Access and authorization are separate. Use invented data for this exercise.",
+      "explain": "What context does your assistant have, and what are you keeping outside this project?"
+    },
+    {
+      "id": "spec",
+      "title": "Define the result",
+      "minutes": "30–45",
+      "source": "method",
+      "segment": "1:11–3:31 · the specification",
+      "idea": "Describe the decision or useful result, not just the document you want produced.",
+      "task": "Make a one-page spec: outcome, intended user, inputs, constraints, assumptions, and a small first deliverable. Resolve one ambiguous decision.",
+      "question": "Which is the stronger starting point?",
+      "answers": [
+        "Make a professional report.",
+        "Use the most powerful model.",
+        "Find unmatched records so a reviewer knows what to investigate; include the source IDs."
+      ],
+      "correct": 2,
+      "feedback": "The third answer names a purpose and evidence a reviewer can use.",
+      "explain": "Which assumption did you resolve, and how did it change the spec?"
+    },
+    {
+      "id": "verify",
+      "title": "Catch a mistake",
+      "minutes": "30–60",
+      "source": "method",
+      "segment": "6:04–8:18 · verification",
+      "idea": "Decide how to check a result before building. A second opinion helps, but it does not replace evidence.",
+      "task": "Predict the answer for a tiny input. Run one attempt. Compare it with your independent check, then deliberately introduce an error and see whether your check catches it.",
+      "question": "Two models agree that a calculation is correct. What should you do next?",
+      "answers": [
+        "Use a hand calculation or trusted executable check on the source inputs.",
+        "Treat agreement as proof.",
+        "Ask the first model to sound more confident."
+      ],
+      "correct": 0,
+      "feedback": "A source-based or executable check provides evidence beyond model agreement.",
+      "explain": "What error did your check catch? What could the check still miss?"
+    },
+    {
+      "id": "reuse",
+      "title": "Make it repeatable",
+      "minutes": "30–45",
+      "source": "skills",
+      "segment": "0:34–3:00 first; longer coding demos are optional.",
+      "idea": "Keep the inputs, instructions, and checks needed to repeat the work outside one long chat.",
+      "task": "Write a reusable instruction file with when to use it, required inputs, steps, checks, and stopping conditions. Start a fresh session with a changed fictional input.",
+      "question": "What belongs in a shareable skill?",
+      "answers": [
+        "Private account credentials so it works immediately.",
+        "The procedure and checks, with sample data and separate configuration.",
+        "All your chat history and employer files."
+      ],
+      "correct": 1,
+      "feedback": "Share the procedure and examples. Each person configures their own data, tools, and permissions.",
+      "explain": "What did the fresh session need that the old chat had been supplying implicitly?"
+    },
+    {
+      "id": "review",
+      "title": "Work with another person",
+      "minutes": "30–45",
+      "source": "method",
+      "segment": "11:07–12:35 · boundaries; read the corrections in RESOURCES.md.",
+      "idea": "Make the proposed action easy to review before it affects another person.",
+      "task": "Prepare a draft for a fictional reviewer. Include sources, unresolved questions, the exact proposed action, and the point where approval is needed. Keep this exercise unsent.",
+      "question": "A draft is complete, but sending has not been authorized. What is its status?",
+      "answers": [
+        "Sent, because the text is ready.",
+        "Approved, because the assistant likes it.",
+        "Draft, awaiting the appropriate review or authorization."
+      ],
+      "correct": 2,
+      "feedback": "Describe the actual state. Preparing a draft is different from sending it.",
+      "explain": "What is the reviewer approving, and how would you tell whether the authorized action really happened?"
+    },
+    {
+      "id": "state",
+      "title": "Repeat safely",
+      "minutes": "45–60",
+      "source": "agents",
+      "segment": "Optional reading; developers can also use the software-factory video.",
+      "idea": "A recurring workflow needs to remember what happened, including uncertain outcomes.",
+      "task": "Make a local queue with item IDs, draft/in-progress/confirmed/unknown states, and a result reference. Dry-run it twice; simulate a crash after an attempted action. No real messages or submissions.",
+      "question": "An action times out after submission. What happens next?",
+      "answers": [
+        "Retry immediately until success.",
+        "Mark it unknown and reconcile a receipt or remote state before retrying.",
+        "Mark it confirmed because it was probably submitted."
+      ],
+      "correct": 1,
+      "feedback": "Uncertain outcomes require reconciliation. A blind retry can duplicate an action.",
+      "explain": "How does your workflow avoid duplicates, and what makes it stop?"
+    }
+  ]
+}

@@ -4,6 +4,20 @@ import test from "node:test";
 
 const templateRoot = new URL("../", import.meta.url);
 
+test("serves the native learning course and its public resources", async () => {
+  const response = await render("/learn");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /Learn by building — JacksonTheDev/);
+  assert.match(html, /Start with your world/);
+  assert.match(html, /Keep your progress/);
+  assert.match(html, /href="https:\/\/jacksonthedev.com\/learn"/);
+  assert.doesNotMatch(html, /<iframe|Hayward|Riya|Call with|127\.0\.0\.1:8765/);
+  const home = await (await render("/")).text();
+  assert.match(home, /href="\/learn"/);
+  for (const path of ["public/learn/learn-by-building.md", "public/learn/examples/orders.csv", "public/learn/examples/payments.csv", "public/learn/RESOURCES.md"]) await access(new URL(path, templateRoot));
+});
+
 async function render(pathname = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", String(process.pid) + "-" + Date.now());
