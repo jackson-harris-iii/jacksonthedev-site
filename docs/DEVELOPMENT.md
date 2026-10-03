@@ -11,3 +11,5 @@ Public contributions should contain reusable course content and synthetic exampl
 The private pre-publication planning document was removed from the branch history before initial publication. Its original source and full history backup remain outside the public repository. Never push backup refs or use `git push --mirror` from a working directory holding private archival refs.
 
 See [learning architecture](LEARNING-ARCHITECTURE.md) for the current boundaries and the criteria for adding storage, tutoring, and ingestion.
+
+Repository guidance starts in [AGENTS.md](../AGENTS.md). Use the [delivery workflow](AGENT-WORKFLOW.md) and [factory implementation plan](FACTORY-IMPLEMENTATION-PLAN.md) for the staged verification/review setup. The current CI remains operational; planned verifier commands, hooks and reviewer integrations are not installed by the documentation foundation.

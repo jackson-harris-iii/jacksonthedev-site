@@ -2,6 +2,8 @@
 
 The JacksonTheDev public website, with the project-based AI learning companion at `/learn`.
 
+Working agreement: [AGENTS.md](AGENTS.md). Workflow rollout: [factory implementation plan](docs/FACTORY-IMPLEMENTATION-PLAN.md).
+
 Development: [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md). Course architecture and growth plan: [docs/LEARNING-ARCHITECTURE.md](docs/LEARNING-ARCHITECTURE.md).
 
 The course currently uses reviewed resources, project templates, and browser-local progress. It does not send learner answers to an AI provider. Private research and recordings are excluded from this repository.
