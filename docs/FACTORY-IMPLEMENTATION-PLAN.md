@@ -1,6 +1,6 @@
 # Repository-owned software factory plan
 
-Status: planning and instruction foundation established; executable enforcement not yet implemented.
+Status: instruction foundation established; phase 1 committed-snapshot verifier implemented, pending the current PR review. Hooks, external review and merge enforcement remain planned.
 
 ## Outcome and scope
 
@@ -15,7 +15,7 @@ The related workspace workflow was inspected as a reference, not installed or ru
 | Task intake | Outcome, base, callers; scope and isolate edits | Plan with criteria and affected paths | Preserve dirty work; resolve material ambiguity | Written agreement established |
 | Skill selection | Task and phase; select repo skill | Fresh-clone-resolvable delivery procedure | Missing tools disclosed; no automatic installation | One local skill established |
 | Build | Site boundaries and standards; implement small diff | Tests for changed behavior and maintained docs | No blanket legacy refactor | Existing implementation plus rules |
-| Verify committed source | Commit/tree, locked dependencies, named checks; isolated checkout | Report identifies tested SHA, commands, results | Nonzero/missing/timed-out checks remain failures; isolated generated output | Existing CI; local snapshot wrapper planned |
+| Verify committed source | Commit/tree, locked dependencies, named checks; isolated checkout | Report identifies tested SHA, commands, results | Nonzero/missing/timed-out checks remain failures; isolated generated output | Local snapshot wrapper and matching CI implemented |
 | Review/repair | Current head, findings, acceptance map; fix then prove again | Current review and disposition of applicable findings | Two correction passes, ten-minute wait ceiling; provider setup needed | Procedure written; external integration unverified |
 | Documentation | Behavior diff and audience; update source guides/examples | Valid links/examples; rendered diagrams when changed | Public/private separation; no UI-only hiding | Maintained repo docs; automatic checker planned |
 | Publish/release | Authorized destination and reviewed source | Correct commit, CI and deployed behavior checked separately | No automatic merge/deploy from a score | Existing GitHub source; no release automation added |
@@ -28,7 +28,7 @@ Acceptance: another checkout can follow the agreement without sibling files or p
 
 ## Phase 1 — reproducible verification and evidence
 
-Proposed files: `scripts/verify.mjs`, `scripts/verification-report.mjs`, `tests/verification.test.mjs`, `package.json`, `.gitignore`, `.github/workflows/ci.yml`, verification runbook. These paths are planned, not available commands.
+Implemented files: `scripts/verify.mjs`, `scripts/verification-report.mjs`, `tests/verification.test.mjs`, `package.json`, `.gitignore`, `.github/workflows/ci.yml`, and [verification runbook](VERIFICATION.md). `npm run verify` is available.
 
 - Add a repo-owned `npm run verify` entry point with explicitly named lint, typecheck, build and model/route-test steps. Refactor test commands carefully so the bundle builds once and no current assertion disappears.
 - Final commit verification rejects tracked edits and tests the chosen commit in an isolated temporary checkout with locked dependencies. Do not copy environment files. Choose dependency installation versus documented local sharing explicitly; shared node_modules is not hermetic proof.
@@ -80,7 +80,7 @@ Affected runtime files begin with `app/learn/`, `db/schema.ts`, future server ro
 | Verification order? | Cheap focused regression first locally; explicit complete commit gate before readiness. Browser suite becomes required once reliable. |
 | New docs host? | Keep public engineering Markdown in Git for now. Add a reading surface only when audience needs justify it. Private team docs require a private source/access boundary. |
 | Hook mechanism/browser dependency? | Decide in phase 2 after inspecting existing Git config and a bounded runtime spike. No dependency selected by this plan. |
-| Accounts/tutor provider and budget? | Open. Resolve before those data flows are built; public lessons remain usable without accounts. |
+| Accounts/tutor provider and budget? | ChatGPT and Google sign-in are both required (October 15). Provider setup, account linking and tutor budget remain open. Resolve before those data flows are built; public lessons remain usable without accounts. |
 | Release target and authorization? | Existing hosting remains. Source publication, merge and production release are separate states. |
 
 ## Risks, validation and rollback

@@ -59,7 +59,7 @@ Confirm paths and call sites before changing them. [Architecture](docs/LEARNING-
 - Tie evidence to the tested revision; disclose working-tree changes and evidence from earlier revisions. Keep `passed`, `failed`, `skipped`, `blocked`, `pending` and `not-run` distinct.
 - Use the [delivery workflow](docs/AGENT-WORKFLOW.md) and [PR template](.github/pull_request_template.md). Fix supported review findings, rerun affected proof and re-review. Default limit: two correction passes and ten minutes of reviewer waiting; report the remaining blocker at the limit.
 - Ready for review can include disclosed gaps. Ready to merge needs current applicable acceptance evidence, required checks, addressed findings and requested review. A score or green job alone is insufficient.
-- No Greptile integration, committed-snapshot verifier, pre-push gate or unattended agent runner is established by these instructions. Do not fabricate a provider verdict or silently substitute one. Follow the implementation plan for those additions.
+- `npm run verify` implements committed-snapshot verification; see [the verification runbook](docs/VERIFICATION.md). No Greptile integration, pre-push gate or unattended agent runner is established by these instructions. Do not fabricate a provider verdict or silently substitute one. Follow the implementation plan for those additions.
 
 ## Execution and cost
 

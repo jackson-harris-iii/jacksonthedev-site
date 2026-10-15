@@ -8,6 +8,8 @@ Development: [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md). Course architecture and
 
 The course currently uses reviewed resources, project templates, and browser-local progress. It does not send learner answers to an AI provider. Private research and recordings are excluded from this repository.
 
+Progress: [GitHub board](https://github.com/users/jackson-harris-iii/projects/2). Commit verification: [runbook](docs/VERIFICATION.md).
+
 ## Hosting foundation
 
 A clean full-stack starter running on

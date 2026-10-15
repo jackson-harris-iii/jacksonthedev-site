@@ -44,3 +44,4 @@ next-env.d.ts
 /WE_KNOW_SAC_LAUNCH.md
 /private/
 *.bundle
+/.artifacts/

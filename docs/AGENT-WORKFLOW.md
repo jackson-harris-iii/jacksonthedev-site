@@ -17,7 +17,7 @@ These roles do not create agents. A self-review is useful but is not independent
 1. Inspect `git status`, current branch/base, relevant code and tests. Preserve dirty work. Reuse the current suitable feature branch for the same outcome; use a separate branch/worktree when parallel work or isolation requires it.
 2. Write acceptance criteria as observable behavior, including negative cases where they matter. For a bug, capture a reproducible baseline before the fix when possible. A source-adoption task also needs a compact adaptation map.
 3. Build the smallest useful change and update the affected maintained docs. Keep learner-facing explanation separate from engineering controls.
-4. Run relevant tests. The current full baseline is `npm run lint`, `npm run typecheck`, `npm test`. These operate on the working checkout; there is no snapshot wrapper yet. Record `git rev-parse HEAD` and disclose uncommitted changes. Use a clean committed run when claiming proof for a commit; do not attach dirty-tree results to an unrelated SHA.
+4. Run relevant tests. The current full baseline is `npm run lint`, `npm run typecheck`, `npm test`. These operate on the working checkout. Use `npm run verify` after committing for isolated snapshot verification; see [the runbook](VERIFICATION.md). Record `git rev-parse HEAD` and disclose uncommitted changes. Use a clean committed run when claiming proof for a commit; do not attach dirty-tree results to an unrelated SHA.
 5. Inspect the diff and public-data boundary. Prepare a PR using the template. Record local/remote/tested/reviewed revisions explicitly when they differ. Hosted PR checks may run a synthetic merge commit; record that tested commit and its relation to the PR head rather than pretending they are identical.
 6. After an authorized push, inspect current checks and review findings. Fix supported findings without an extra routine approval gate. Rerun affected proof and request another review only for the new head. Stop after two correction passes or ten minutes waiting on the reviewer and report what remains.
 7. Handoff with outcome, PR, exact validation, known gaps and release state. Merge, deployment and production verification are distinct steps.
@@ -37,8 +37,8 @@ Use synthetic learner data for captures. Keep raw logs/media outside Git and dep
 
 ## Review and enforcement status
 
-Current: hosted lint/typecheck/build/test workflow; written delivery agreement; PR evidence template; one repo-owned skill. CI execution is not proof that GitHub requires the check before merge.
+Current: `npm run verify` with fresh locked dependencies in a temporary checkout, structured reports and failure regression tests; hosted CI uses this same command. Written delivery agreement, PR evidence template and one repo-owned skill. CI execution is not proof that GitHub requires the check before merge.
 
-Planned: committed-snapshot verifier, push hook, tested report publisher, external reviewer setup, required-check configuration. No unattended coding service is included. Greptile is the proposed reviewer to match the reference workflow; if selected, require an explicit current-head 5/5 plus finding dispositions and applicable checks. Until configured and proved here, label Greptile not configured. A different reviewer policy is an explicit owner decision, never a fabricated equivalent score.
+Planned: push hook, tested report publisher, external reviewer setup, required-check configuration. No unattended coding service is included. Greptile is the proposed reviewer to match the reference workflow; if selected, require an explicit current-head 5/5 plus finding dispositions and applicable checks. Until configured and proved here, label Greptile not configured. A different reviewer policy is an explicit owner decision, never a fabricated equivalent score.
 
 [Implementation phases and acceptance](FACTORY-IMPLEMENTATION-PLAN.md).

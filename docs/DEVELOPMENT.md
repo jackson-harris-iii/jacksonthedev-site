@@ -12,4 +12,6 @@ The private pre-publication planning document was removed from the branch histor
 
 See [learning architecture](LEARNING-ARCHITECTURE.md) for the current boundaries and the criteria for adding storage, tutoring, and ingestion.
 
-Repository guidance starts in [AGENTS.md](../AGENTS.md). Use the [delivery workflow](AGENT-WORKFLOW.md) and [factory implementation plan](FACTORY-IMPLEMENTATION-PLAN.md) for the staged verification/review setup. The current CI remains operational; planned verifier commands, hooks and reviewer integrations are not installed by the documentation foundation.
+Repository guidance starts in [AGENTS.md](../AGENTS.md). Use the [delivery workflow](AGENT-WORKFLOW.md) and [factory implementation plan](FACTORY-IMPLEMENTATION-PLAN.md) for the staged verification/review setup. The current CI remains operational; `npm run verify` now implements phase 1; hooks and external reviewer integrations remain planned.
+
+After committing, run `npm run verify` for the isolated full gate. See [verification](VERIFICATION.md), [the GitHub progress board](https://github.com/users/jackson-harris-iii/projects/2), and [pilot readiness](PILOT-READINESS.md).
