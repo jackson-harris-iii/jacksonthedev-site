@@ -15,3 +15,9 @@ See [learning architecture](LEARNING-ARCHITECTURE.md) for the current boundaries
 Repository guidance starts in [AGENTS.md](../AGENTS.md). Use the [delivery workflow](AGENT-WORKFLOW.md) and [factory implementation plan](FACTORY-IMPLEMENTATION-PLAN.md) for the staged verification/review setup. The current CI remains operational; `npm run verify` now implements phase 1; hooks and external reviewer integrations remain planned.
 
 After committing, run `npm run verify` for the isolated full gate. See [verification](VERIFICATION.md), [the GitHub progress board](https://github.com/users/jackson-harris-iii/projects/2), and [pilot readiness](PILOT-READINESS.md).
+
+## Account progress preview
+
+Declare D1 as `DB`, generate migrations with `npm run db:generate`, and build with `npm run build`. Apply new local SQL with `node node_modules/wrangler/bin/wrangler.js d1 execute DB --local --config dist/server/wrangler.json --persist-to .wrangler/state --file drizzle/0000_nappy_wind_dancer.sql` (once per local database). Preview the built Worker with `node node_modules/wrangler/bin/wrangler.js dev --config dist/server/wrangler.json --local --ip 127.0.0.1 --port 5187 --persist-to .wrangler/state`. This version's `vinext start` does not attach the D1 binding.
+
+`tests/learn-progress.test.mjs` uses synthetic identities and SQLite to exercise the same queries, validation and synchronization controller. Real sign-in is owned by Sites dispatch and must be checked on the hosted site. Never ship a fake identity or expose a local synthetic-auth proxy beyond loopback. GET progress is private/no-store; PUT/DELETE require same-origin JSON, current verified account ID, and revision.

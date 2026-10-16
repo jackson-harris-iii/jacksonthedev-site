@@ -1,0 +1,9 @@
+# Account progress release — October 15, 2026
+
+Scope: private D1 progress on the existing native `/learn` course; ChatGPT sign-in with Google available through that provider's account flow. Separate Google-only OAuth remains open in #3. No unrelated homepage edits are included.
+
+Validation before publication: `npm run lint`, `npm run typecheck`, `npm test` passed (30 tests; build included). `node --test tests/learn-progress.test.mjs` exercises authorization, migration, concurrency, device recovery and failure handling. `git diff --check` passed. Browser checks on the built Worker with local D1 and synthetic identities passed creation, note autosave, reload restoration, two-user separation, stale-tab conflict and explicit resolution. Desktop layout inspected. The browser viewport override did not take effect, so this run does not claim a fresh mobile viewport check.
+
+Production verification and exact deployment/source IDs belong in issue #5 after publishing. Hosted source history and sanitized GitHub history differ; publish equivalent source trees without force-pushing or copying private historical refs to GitHub. Previous live rollback version: 14 (`appgprj_6a67e43fcff48191b42282df99db4f7c~appgver_a5d4869c843c8191b4504aadd04744ef`). The new migration is additive; a rollback must preserve learner records.
+
+Known limits: guest drafts from localhost still need one-time import because browser origins differ. Account users no longer need JSON for normal return visits or device changes. Account draft cache is device-local; export remains useful for retaining alternatives. The app stores the latest snapshot, not full evidence history. No adaptive in-site tutor or certification is claimed. Existing dependency advisories are tracked separately; this is not a clean dependency-audit claim. No independent external reviewer is configured.

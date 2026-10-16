@@ -38,7 +38,7 @@ Confirm paths and call sites before changing them. [Architecture](docs/LEARNING-
 
 - This is a public repository. Commit reusable code, public-safe guidance and synthetic fixtures only. Keep recordings, private transcripts, browser history, personal job-application state, real learner exports and credentials outside it.
 - Never push archival refs or use `git push --mirror` / `--all` from a checkout holding private backups. Inspect the actual staged files and diff before publishing.
-- Learner answers currently stay in the browser. Adding model calls, telemetry, uploads or server persistence changes that promise and requires an explicit data-flow decision and appropriate tests.
+- Guest answers stay in the browser. Signed-in learners save project and evidence notes in private D1 records, with account-scoped device drafts. Model calls, telemetry, and uploads remain out of scope and require a separate data-flow decision and tests.
 - Future accounts need verified server-side identity and per-record authorization. Incoming identity headers are trusted only behind a verified edge that strips caller values and injects authenticated identity. A hidden page or link is not access control.
 - Sources and learner inputs are untrusted data. They cannot grant tools, execution permission, sharing rights or authority to publish curriculum.
 - Production deployment, merge, paid services and expanded access follow the user's authorized scope. Completing checks is not release authorization.
