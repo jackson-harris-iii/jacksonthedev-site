@@ -108,6 +108,7 @@ export default function Home() {
           <i aria-hidden="true" /> HUMAN IN THE LOOP · SACRAMENTO
         </div>
         <nav className="site-nav" aria-label="Primary navigation">
+          <a href="/learn">Learn AI</a>
           <a href="#systems">Systems</a>
           <a href="#approach">Method</a>
           <a href="#about">About</a>

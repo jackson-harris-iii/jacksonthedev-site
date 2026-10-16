@@ -1,4 +1,16 @@
-# vinext-starter
+# JacksonTheDev / Human in the Loop
+
+The JacksonTheDev public website, with the project-based AI learning companion at `/learn`.
+
+Working agreement: [AGENTS.md](AGENTS.md). Workflow rollout: [factory implementation plan](docs/FACTORY-IMPLEMENTATION-PLAN.md).
+
+Development: [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md). Course architecture and growth plan: [docs/LEARNING-ARCHITECTURE.md](docs/LEARNING-ARCHITECTURE.md).
+
+The course currently uses reviewed resources, project templates, guest browser progress, and private account progress backed by D1. ChatGPT sign-in includes Google/Gmail through the ChatGPT flow; separate Google-only OAuth is not implemented. It does not send learner answers to an AI provider. Private research and recordings are excluded from this repository.
+
+Progress: [GitHub board](https://github.com/users/jackson-harris-iii/projects/2). Commit verification: [runbook](docs/VERIFICATION.md).
+
+## Hosting foundation
 
 A clean full-stack starter running on
 [vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
